@@ -1,0 +1,2701 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manga Autos | Luxury & High-Performance Dealership Abuja</title>
+  <meta name="description" content="Exotic supercars, luxury sedans, and high-performance vehicles in Maitama, Abuja. Verified customs duty clearance and bespoke international sourcing." />
+  <meta property="og:title" content="Manga Autos | Curated Performance. Defined Luxury." />
+  <meta property="og:description" content="Flagship luxury showroom on Shehu Shagari Way, Maitama, Abuja. Curated exotic supercars, V12 engineering, and bespoke vehicle sourcing with 100% customs clearance guarantee." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Instant Theme Sync before DOM paint to avoid flash -->
+  <script>
+    (function() {
+      try {
+        const saved = localStorage.getItem('manga_theme');
+        if (saved === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Three.js 3D Engine & OrbitControls for Real-Time Interactive 360° Studio -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+  <!-- Manga Automobiles Official Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/images/manga_logo.svg" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & Cinzel (Luxury Display) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#09090B',
+            alabaster: '#FAF8F5',
+            surface: {
+              card: '#141416',
+              elevated: '#1D1D20',
+              subtle: '#101012',
+              border: '#27272A'
+            },
+            lightSurface: {
+              card: '#FFFFFF',
+              elevated: '#F4F1EA',
+              subtle: '#F9F7F2',
+              border: '#E4DFD5'
+            },
+            brandRed: {
+              300: '#FCA5A5',
+              400: '#F87171',
+              500: '#DC2626', // Signature Manga Racing Crimson
+              600: '#B91C1C',
+              700: '#991B1B'
+            },
+            silver: {
+              200: '#E4E4E7',
+              300: '#D4D4D8',
+              400: '#A1A1AA',
+              500: '#71717A'
+            },
+            charcoal: {
+              700: '#374151',
+              800: '#1F2937',
+              900: '#111827'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            display: ['"Cinzel"', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          boxShadow: {
+            'red-glow': '0 0 35px -5px rgba(220, 38, 38, 0.4)',
+            'red-glow-subtle': '0 0 20px -3px rgba(220, 38, 38, 0.25)',
+            'card-lift': '0 20px 40px -15px rgba(0, 0, 0, 0.65)',
+            'light-card': '0 15px 35px -10px rgba(0, 0, 0, 0.08)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom Luxury Styling & HUD Lines */
+    ::selection {
+      background-color: #DC2626;
+      color: #FFFFFF;
+    }
+
+    /* Light/Dark mode transitions */
+    html.dark body {
+      background-color: #09090B;
+      color: #FFFFFF;
+    }
+
+    html:not(.dark) body {
+      background-color: #FAF8F5;
+      color: #111827;
+    }
+
+    .font-display {
+      font-family: 'Cinzel', serif;
+    }
+
+    .font-mono-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Glassmorphic surfaces (Dark Mode) */
+    html.dark .glass-panel {
+      background: rgba(18, 18, 20, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Glassmorphic surfaces (Light Mode) */
+    html:not(.dark) .glass-panel {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(220, 38, 38, 0.12);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
+    }
+
+    html.dark .glass-crimson-subtle, html.dark .glass-gold-subtle {
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.08) 0%, rgba(18, 18, 20, 0.95) 100%);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+    }
+
+    html:not(.dark) .glass-crimson-subtle, html:not(.dark) .glass-gold-subtle {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 248, 245, 0.9) 100%);
+      border: 1px solid rgba(220, 38, 38, 0.25);
+      box-shadow: 0 15px 35px -10px rgba(220, 38, 38, 0.08);
+    }
+
+    /* Carbon weave pattern overlay */
+    html.dark .carbon-bg-subtle {
+      background-image: radial-gradient(rgba(220, 38, 38, 0.09) 1px, transparent 1px),
+                        radial-gradient(rgba(255, 255, 255, 0.03) 1px, #09090B 1px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+    }
+
+    html:not(.dark) .carbon-bg-subtle {
+      background-image: radial-gradient(rgba(220, 38, 38, 0.06) 1px, transparent 1px),
+                        radial-gradient(rgba(0, 0, 0, 0.03) 1px, #FAF8F5 1px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    html.dark ::-webkit-scrollbar-track {
+      background: #09090B;
+    }
+    html:not(.dark) ::-webkit-scrollbar-track {
+      background: #F4F1EA;
+    }
+    html.dark ::-webkit-scrollbar-thumb {
+      background: #27272A;
+      border-radius: 4px;
+    }
+    html:not(.dark) ::-webkit-scrollbar-thumb {
+      background: #D4D4D8;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #DC2626;
+    }
+  </style>
+</head>
+
+<body class="bg-alabaster dark:bg-obsidian text-charcoal-900 dark:text-white min-h-screen flex flex-col selection:bg-brandRed-500 selection:text-white antialiased transition-colors duration-300">
+
+  <!-- ================= TOP NOTIFICATION / PROVENANCE TICKER ================= -->
+  <div class="w-full bg-[#EDE8DF] dark:bg-[#121214] border-b border-lightSurface-border dark:border-surface-border/50 text-xs py-2 px-4 sm:px-8 text-charcoal-700 dark:text-silver-400 transition-colors">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <div class="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+        <span class="text-charcoal-900 dark:text-silver-300 font-semibold tracking-wide">Maitama Showroom Open</span>
+        <span class="text-silver-400 dark:text-silver-500 hidden sm:inline">·</span>
+        <span class="hidden sm:inline text-charcoal-700 dark:text-silver-400">Nigeria Customs Service Authenticated Single Goods Declaration (SGD) on all inventory</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs shrink-0">
+        <a href="tel:+2348096264228" class="hover:text-brandRed-500 dark:hover:text-white transition-colors flex items-center gap-1.5 font-mono-num font-medium">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-brandRed-500 dark:text-brandRed-400"></i>
+          <span class="hidden md:inline">+234 (0) 809 MANGA</span>
+          <span class="md:hidden">Call Showroom</span>
+        </a>
+        <span class="text-silver-300 dark:text-surface-border">|</span>
+        <span class="text-brandRed-500 dark:text-brandRed-400 font-semibold">Abuja, FCT</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HEADER (Top Bar Contract) ================= -->
+  <header class="sticky top-0 z-40 w-full glass-panel border-b border-lightSurface-border/80 dark:border-surface-border/80 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Zone 1: Official Manga Automobiles Marque Logo -->
+      <a href="#hero" class="flex items-center gap-3.5 group">
+        <div class="relative py-1.5 px-3 rounded-lg bg-white dark:bg-surface-subtle/90 border border-lightSurface-border dark:border-surface-border shadow-sm dark:shadow-none group-hover:border-brandRed-500/50 group-hover:shadow-[0_0_20px_rgba(220,38,38,0.25)] transition-all duration-300 flex items-center">
+          <img src="/images/manga_logo.svg" alt="Manga Automobiles" class="manga-brand-logo h-8 sm:h-10 w-auto object-contain transition-all" />
+        </div>
+        <div class="hidden lg:flex flex-col border-l border-lightSurface-border dark:border-surface-border/80 pl-3">
+          <span class="text-[10px] tracking-[0.22em] text-charcoal-700 dark:text-silver-300 uppercase font-sans font-semibold">Maitama · Abuja</span>
+          <span class="text-[9px] font-mono text-brandRed-500 dark:text-brandRed-400 font-semibold">Flagship Dealership</span>
+        </div>
+      </a>
+
+      <!-- Zone 2: Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-charcoal-700 dark:text-silver-300">
+        <a href="#interactive-3d-studio" class="hover:text-brandRed-500 dark:hover:text-white transition-colors relative py-1 hover:border-b-2 hover:border-brandRed-500 flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-brandRed-500"></span>
+          <span>3D Studio</span>
+        </a>
+        <a href="#inventory" class="hover:text-brandRed-500 dark:hover:text-white transition-colors relative py-1 hover:border-b-2 hover:border-brandRed-500">Collection</a>
+        <a href="#provenance" class="hover:text-brandRed-500 dark:hover:text-white transition-colors relative py-1 hover:border-b-2 hover:border-brandRed-500">Customs Clearance</a>
+        <a href="#concierge" class="hover:text-brandRed-500 dark:hover:text-white transition-colors relative py-1 hover:border-b-2 hover:border-brandRed-500">Bespoke Sourcing</a>
+        <a href="#experience" class="hover:text-brandRed-500 dark:hover:text-white transition-colors relative py-1 hover:border-b-2 hover:border-brandRed-500">Private Suite</a>
+        <a href="#contact" class="hover:text-brandRed-500 dark:hover:text-white transition-colors relative py-1 hover:border-b-2 hover:border-brandRed-500">Showroom</a>
+      </nav>
+
+      <!-- Zone 3: Currency Switcher, Theme Switcher & Primary Action -->
+      <div class="flex items-center gap-2.5 sm:gap-4">
+        
+        <!-- Light / Dark Theme Switcher -->
+        <button 
+          type="button" 
+          onclick="toggleTheme()" 
+          id="theme-toggle-btn" 
+          class="p-2 rounded-lg border border-lightSurface-border dark:border-surface-border text-charcoal-800 dark:text-silver-300 hover:text-brandRed-500 dark:hover:text-white bg-lightSurface-elevated dark:bg-surface-subtle transition-all duration-200 flex items-center justify-center shadow-sm" 
+          aria-label="Toggle light and dark mode"
+          title="Switch theme"
+        >
+          <i data-lucide="sun" id="theme-icon-sun" class="w-4 h-4 text-brandRed-400 hidden dark:block transition-transform hover:rotate-45"></i>
+          <i data-lucide="moon" id="theme-icon-moon" class="w-4 h-4 text-charcoal-800 block dark:hidden transition-transform hover:-rotate-12"></i>
+        </button>
+
+        <!-- Currency Switcher -->
+        <div class="inline-flex p-1 bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border rounded-lg text-xs font-semibold" role="group" aria-label="Currency selection">
+          <button type="button" id="currency-ngn-btn" onclick="setCurrency('NGN')" class="px-2.5 py-1 rounded transition-all bg-brandRed-500 text-white font-semibold shadow-sm" title="Nigerian Naira">
+            ₦ NGN
+          </button>
+          <button type="button" id="currency-usd-btn" onclick="setCurrency('USD')" class="px-2.5 py-1 rounded transition-all text-charcoal-600 dark:text-silver-400 hover:text-black dark:hover:text-white" title="US Dollar">
+            $ USD
+          </button>
+        </div>
+
+        <!-- Sourcing Action Button -->
+        <button type="button" onclick="openBespokeModal()" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-brandRed-600 hover:bg-brandRed-500 rounded-lg transition-all shadow-md hover:shadow-red-glow">
+          <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+          <span>Bespoke Sourcing</span>
+        </button>
+
+        <!-- Mobile Menu Trigger -->
+        <button type="button" onclick="toggleMobileMenu()" class="md:hidden p-2 text-charcoal-800 dark:text-silver-400 hover:text-black dark:hover:text-white rounded-lg border border-lightSurface-border dark:border-surface-border bg-lightSurface-elevated dark:bg-surface-subtle" aria-label="Toggle navigation">
+          <i data-lucide="menu" id="menu-icon" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-lightSurface-border dark:border-surface-border bg-white dark:bg-surface-subtle px-4 pt-3 pb-5 space-y-3">
+      <a href="#interactive-3d-studio" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-charcoal-800 dark:text-silver-300 hover:text-brandRed-500 dark:hover:text-white">3D Interactive Studio</a>
+      <a href="#inventory" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-charcoal-800 dark:text-silver-300 hover:text-brandRed-500 dark:hover:text-white">Curated Collection</a>
+      <a href="#provenance" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-charcoal-800 dark:text-silver-300 hover:text-brandRed-500 dark:hover:text-white">Customs Clearance Guarantee</a>
+      <a href="#concierge" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-charcoal-800 dark:text-silver-300 hover:text-brandRed-500 dark:hover:text-white">Bespoke Vehicle Sourcing</a>
+      <a href="#experience" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-charcoal-800 dark:text-silver-300 hover:text-brandRed-500 dark:hover:text-white">Private Viewing Suite</a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-charcoal-800 dark:text-silver-300 hover:text-brandRed-500 dark:hover:text-white">Showroom & Location</a>
+      <div class="pt-2">
+        <button type="button" onclick="openBespokeModal(); toggleMobileMenu();" class="w-full py-2.5 text-center text-xs font-bold uppercase tracking-wider text-white bg-brandRed-600 hover:bg-brandRed-500 rounded-lg font-sans shadow-md">
+          Request Bespoke Sourcing
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 1. HERO SECTION (High Performance HUD) ================= -->
+  <section id="hero" class="relative min-h-[92vh] flex items-center justify-center pt-8 pb-16 carbon-bg-subtle overflow-hidden transition-colors duration-300">
+    <!-- Ambient Crimson Glow in background -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-brandRed-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute top-1/3 left-1/4 w-[400px] h-[300px] bg-brandRed-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <!-- Grand Ambient Manga Automobiles Watermark -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[950px] h-[380px] opacity-[0.04] dark:opacity-[0.035] pointer-events-none select-none flex items-center justify-center">
+      <img src="/images/manga_logo.svg" alt="" class="manga-brand-logo w-full h-auto object-contain filter dark:invert" />
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+      
+      <!-- Top Brand Heritage Capsule -->
+      <div class="flex justify-center mb-6">
+        <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-brandRed-500/30 dark:border-brandRed-500/40 bg-white/90 dark:bg-surface-card/90 text-xs text-charcoal-800 dark:text-silver-300 backdrop-blur-md shadow-sm dark:shadow-red-glow">
+          <img src="/images/manga_logo.svg" alt="Manga Automobiles" class="manga-brand-logo h-4 w-auto object-contain" />
+          <span class="text-silver-400 dark:text-silver-600">|</span>
+          <span class="text-brandRed-500 dark:text-brandRed-400 font-bold tracking-wide">Est. 2015</span>
+          <span class="text-silver-400 dark:text-silver-500">|</span>
+          <span class="text-charcoal-700 dark:text-silver-300 font-medium">Flagship Showroom: Shehu Shagari Way, Maitama, Abuja</span>
+        </div>
+      </div>
+
+      <!-- Main Editorial Headline & Subheadline -->
+      <div class="text-center max-w-4xl mx-auto mb-10">
+        <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-charcoal-900 dark:text-white mb-6 leading-[1.1] [text-wrap:balance]">
+          Curated Performance. <br class="hidden sm:inline"/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandRed-500 via-brandRed-400 to-silver-100">Defined Luxury.</span>
+        </h1>
+        <p class="text-base sm:text-xl text-charcoal-600 dark:text-silver-400 leading-relaxed max-w-2xl mx-auto font-light [text-wrap:balance]">
+          Sourcing and delivering the world's most prestigious automotive engineering to a discerning clientele in Abuja & worldwide.
+        </p>
+      </div>
+
+      <!-- Hero Visual & Real-Time Dealership HUD -->
+      <div class="relative rounded-2xl overflow-hidden border border-lightSurface-border dark:border-surface-border bg-white dark:bg-surface-card shadow-2xl mb-12 group transition-colors duration-300">
+        <div class="relative h-[360px] sm:h-[480px] w-full overflow-hidden">
+          <img 
+            id="hero-perspective-img"
+            src="/images/hero_manga_autos_1790500446110.jpg" 
+            alt="Manga Autos Flagship Showroom in Maitama Abuja with exotic track supercar" 
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-1000 ease-out"
+            referrerpolicy="no-referrer"
+            onerror="this.src='/src/assets/images/hero_manga_autos_1790500446110.jpg'"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 dark:from-obsidian dark:via-obsidian/40 to-transparent"></div>
+          
+          <!-- Showroom Badge Overlay -->
+          <div class="absolute top-4 left-4 sm:top-6 sm:left-6 flex flex-col gap-1 z-10">
+            <div class="inline-flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span id="hero-badge-subtitle" class="text-[10px] uppercase font-mono tracking-widest text-brandRed-400 drop-shadow">Showroom Floor Presentation</span>
+            </div>
+            <span id="hero-badge-title" class="text-lg sm:text-2xl font-display font-bold text-white drop-shadow-md">Maitama Flagship Fleet</span>
+          </div>
+
+          <!-- Official Marque Hallmark Seal Overlay with Manga Automobiles Logo -->
+          <div class="absolute top-4 right-4 sm:top-6 sm:right-6 hidden sm:flex items-center gap-3 px-3.5 py-2 rounded-xl bg-black/80 dark:bg-obsidian/90 border border-brandRed-500/40 backdrop-blur-md shadow-card-lift z-10">
+            <div class="h-8 w-auto flex items-center pr-1">
+              <img src="/images/manga_logo.svg" alt="Manga Automobiles" class="manga-brand-logo h-7 w-auto object-contain" />
+            </div>
+            <div class="flex flex-col text-left border-l border-white/20 pl-2.5">
+              <span class="text-[9px] font-mono uppercase tracking-widest text-brandRed-400 font-semibold">Marque Certified</span>
+              <span class="text-xs font-semibold text-white">Manga Provenance</span>
+            </div>
+          </div>
+
+          <!-- Interactive Perspective Switcher Controls -->
+          <div class="absolute top-16 sm:top-20 left-4 sm:left-6 flex items-center gap-2 z-10 flex-wrap">
+            <button 
+              type="button" 
+              onclick="switchHeroPerspective(0)" 
+              id="hero-tab-0" 
+              class="hero-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-brandRed-500 text-white shadow-md transition-all flex items-center gap-1.5 backdrop-blur-md"
+            >
+              <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+              <span>Main Atelier</span>
+            </button>
+            <button 
+              type="button" 
+              onclick="switchHeroPerspective(1)" 
+              id="hero-tab-1" 
+              class="hero-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-black/60 hover:bg-black/80 text-white/90 border border-white/20 transition-all flex items-center gap-1.5 backdrop-blur-md"
+            >
+              <i data-lucide="sun" class="w-3.5 h-3.5 text-brandRed-400"></i>
+              <span>Maitama Daylight</span>
+            </button>
+            <button 
+              type="button" 
+              onclick="switchHeroPerspective(2)" 
+              id="hero-tab-2" 
+              class="hero-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-black/60 hover:bg-black/80 text-white/90 border border-white/20 transition-all flex items-center gap-1.5 backdrop-blur-md"
+            >
+              <i data-lucide="moon" class="w-3.5 h-3.5 text-silver-300"></i>
+              <span>Night Hypercar Vault</span>
+            </button>
+          </div>
+
+          <!-- Quick Actions Overlay -->
+          <div class="absolute bottom-6 left-4 sm:left-8 right-4 sm:right-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 z-10">
+            <div>
+              <p class="text-xs text-silver-300 font-mono tracking-wide uppercase mb-1">Authenticity & Protocol</p>
+              <div class="flex items-center gap-2 text-sm text-white">
+                <span class="flex items-center gap-1.5 text-emerald-400 font-semibold">
+                  <i data-lucide="check-circle" class="w-4 h-4"></i> Fully Documented Clean Titles
+                </span>
+                <span class="text-white/40">·</span>
+                <span class="text-silver-300">Pre-inspected 100-point chassis scan</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <a href="#interactive-3d-studio" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-brandRed-600 hover:bg-brandRed-500 transition-colors rounded-lg shadow-md hover:shadow-red-glow flex items-center gap-1.5">
+                <i data-lucide="orbit" class="w-3.5 h-3.5"></i>
+                <span>Inspect 3D Car</span>
+              </a>
+              <a href="#inventory" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 border border-white/25 transition-colors rounded-lg backdrop-blur-md">
+                View Fleet
+              </a>
+              <button type="button" onclick="openPrivateViewingModal('General Showroom Consultation')" class="hidden sm:inline-flex px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white border border-white/30 bg-black/60 hover:bg-black/90 transition-colors rounded-lg backdrop-blur-md">
+                Book Private Tour
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telemetry Proof Bar underneath image -->
+        <div class="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-lightSurface-border dark:divide-surface-border bg-lightSurface-subtle/95 dark:bg-surface-subtle/95 border-t border-lightSurface-border dark:border-surface-border py-4 px-4 sm:px-8 text-center sm:text-left transition-colors">
+          <div class="p-3">
+            <div class="text-[11px] uppercase tracking-wider text-charcoal-600 dark:text-silver-500 font-mono">Customs Duty Status</div>
+            <div class="text-sm sm:text-base font-bold text-charcoal-900 dark:text-white mt-0.5 flex items-center justify-center sm:justify-start gap-1.5">
+              <i data-lucide="shield-alert" class="w-4 h-4 text-brandRed-500"></i>
+              <span>100% NCS Certified</span>
+            </div>
+          </div>
+          <div class="p-3">
+            <div class="text-[11px] uppercase tracking-wider text-charcoal-600 dark:text-silver-500 font-mono">Clientele Privacy</div>
+            <div class="text-sm sm:text-base font-bold text-charcoal-900 dark:text-white mt-0.5 flex items-center justify-center sm:justify-start gap-1.5">
+              <i data-lucide="lock" class="w-4 h-4 text-brandRed-500"></i>
+              <span>Confidential Viewing Bays</span>
+            </div>
+          </div>
+          <div class="p-3">
+            <div class="text-[11px] uppercase tracking-wider text-charcoal-600 dark:text-silver-500 font-mono">Nigeria Logistics</div>
+            <div class="text-sm sm:text-base font-bold text-charcoal-900 dark:text-white mt-0.5 flex items-center justify-center sm:justify-start gap-1.5">
+              <i data-lucide="truck" class="w-4 h-4 text-brandRed-500"></i>
+              <span>Enclosed Flatbed Delivery</span>
+            </div>
+          </div>
+          <div class="p-3">
+            <div class="text-[11px] uppercase tracking-wider text-charcoal-600 dark:text-silver-500 font-mono">Global Sourcing</div>
+            <div class="text-sm sm:text-base font-bold text-charcoal-900 dark:text-white mt-0.5 flex items-center justify-center sm:justify-start gap-1.5">
+              <i data-lucide="globe" class="w-4 h-4 text-brandRed-500"></i>
+              <span>Stuttgart · London · US</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Spec Search Filter Bar (Interactive High-Performance HUD) -->
+      <div class="glass-panel rounded-xl p-5 sm:p-6 border border-lightSurface-border dark:border-surface-border shadow-card-lift transition-colors duration-300">
+        <div class="flex items-center justify-between gap-4 mb-4 pb-3 border-b border-lightSurface-border dark:border-surface-border">
+          <div class="flex items-center gap-2">
+            <i data-lucide="sliders-horizontal" class="w-4 h-4 text-brandRed-500"></i>
+            <span class="text-xs uppercase tracking-widest font-mono text-charcoal-800 dark:text-silver-300 font-semibold">High-Performance Spec Filter Engine</span>
+          </div>
+          <div class="text-xs text-charcoal-600 dark:text-silver-400 font-mono">
+            Showing <span id="filtered-count" class="text-brandRed-500 dark:text-brandRed-400 font-bold font-mono-num">6</span> of 6 Vehicles
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Filter: Make -->
+          <div>
+            <label for="filter-make" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1.5 font-medium">Manufacturer / Make</label>
+            <div class="relative">
+              <select id="filter-make" onchange="applyFilters()" class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2.5 appearance-none focus:outline-none focus:border-brandRed-500 transition-colors">
+                <option value="all">All Prestigious Marques</option>
+                <option value="Lamborghini">Lamborghini</option>
+                <option value="Mercedes-Benz">Mercedes-AMG / Benz</option>
+                <option value="BMW">BMW M</option>
+                <option value="Porsche">Porsche</option>
+                <option value="Lexus">Lexus</option>
+                <option value="Audi">Audi Sport</option>
+                <option value="Tesla">Tesla</option>
+                <option value="Toyota">Toyota</option>
+              </select>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-charcoal-500 dark:text-silver-400 absolute right-3 top-3 pointer-events-none"></i>
+            </div>
+          </div>
+
+          <!-- Filter: Body Style -->
+          <div>
+            <label for="filter-style" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1.5 font-medium">Body Architecture</label>
+            <div class="relative">
+              <select id="filter-style" onchange="applyFilters()" class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2.5 appearance-none focus:outline-none focus:border-brandRed-500 transition-colors">
+                <option value="all">All Architectures</option>
+                <option value="Supercar">Supercar & Track</option>
+                <option value="Executive Sedan">Executive Sedan</option>
+                <option value="Executive SUV">Executive SUV / Gran Tourer</option>
+              </select>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-charcoal-500 dark:text-silver-400 absolute right-3 top-3 pointer-events-none"></i>
+            </div>
+          </div>
+
+          <!-- Filter: Engine / Powertrain -->
+          <div>
+            <label for="filter-engine" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1.5 font-medium">Powertrain / Engine</label>
+            <div class="relative">
+              <select id="filter-engine" onchange="applyFilters()" class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2.5 appearance-none focus:outline-none focus:border-brandRed-500 transition-colors">
+                <option value="all">All Powertrains</option>
+                <option value="V12">V12 Atmospheric</option>
+                <option value="V10">V10 Naturally Aspirated</option>
+                <option value="Twin-Turbo">V8 / I6 Twin-Turbo</option>
+                <option value="EV">Pure Electric (EV)</option>
+                <option value="Hybrid">Flagship Hybrid</option>
+              </select>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-charcoal-500 dark:text-silver-400 absolute right-3 top-3 pointer-events-none"></i>
+            </div>
+          </div>
+
+          <!-- Filter: Search Keyword / Reset -->
+          <div>
+            <label for="filter-search" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1.5 font-medium">Keyword / Chassis</label>
+            <div class="relative flex items-center">
+              <input 
+                type="text" 
+                id="filter-search" 
+                oninput="applyFilters()" 
+                placeholder="e.g. SVJ, Plaid, C300..." 
+                class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg pl-9 pr-8 py-2.5 focus:outline-none focus:border-brandRed-500 transition-colors"
+              />
+              <i data-lucide="search" class="w-4 h-4 text-charcoal-500 dark:text-silver-400 absolute left-3 pointer-events-none"></i>
+              <button type="button" onclick="resetFilters()" class="absolute right-2.5 text-xs text-charcoal-400 dark:text-silver-500 hover:text-brandRed-500 p-1" title="Reset filters">
+                <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 3D INTERACTIVE CAR STUDIO (360° Rotate & Inspect) ================= -->
+  <section id="interactive-3d-studio" class="py-16 bg-white dark:bg-[#070709] border-t border-lightSurface-border dark:border-surface-border relative overflow-hidden transition-colors duration-300">
+    <!-- Ambient Red Glow in 3D Stage -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-brandRed-600/10 dark:bg-brandRed-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Studio Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brandRed-500/30 dark:border-brandRed-500/40 bg-brandRed-500/5 text-xs text-brandRed-600 dark:text-brandRed-400 font-mono font-semibold mb-3">
+            <i data-lucide="orbit" class="w-3.5 h-3.5 animate-spin text-brandRed-500" style="animation-duration: 6s;"></i>
+            <span>360° Real-Time Interactive Atelier</span>
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-charcoal-900 dark:text-white">
+            Inspect & Rotate in 3D
+          </h2>
+          <p class="text-sm text-charcoal-600 dark:text-silver-400 mt-2 max-w-xl font-light">
+            Click, drag, or swipe to rotate the chassis 360°. Pinch or scroll to zoom, customize factory coachwork paint, toggle racing headlights, and activate aero components in real-time.
+          </p>
+        </div>
+
+        <!-- 3D Studio Quick Status Chips -->
+        <div class="flex items-center gap-3 flex-wrap">
+          <div class="px-3.5 py-1.5 rounded-lg bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border flex items-center gap-2 text-xs font-mono text-charcoal-700 dark:text-silver-300">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>WebGL 60 FPS Engine</span>
+          </div>
+          <button 
+            type="button" 
+            onclick="reset3DCamera()" 
+            class="px-3.5 py-1.5 rounded-lg border border-lightSurface-border dark:border-surface-border text-charcoal-700 dark:text-silver-300 hover:text-brandRed-500 dark:hover:text-white bg-lightSurface-elevated dark:bg-surface-subtle transition-colors text-xs flex items-center gap-1.5 shadow-sm"
+            title="Reset viewing perspective"
+          >
+            <i data-lucide="refresh-ccw" class="w-3.5 h-3.5"></i>
+            <span>Reset View</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main 3D Canvas Viewport Container -->
+      <div class="relative rounded-2xl overflow-hidden border border-lightSurface-border dark:border-surface-border/80 bg-gradient-to-b from-[#18181B] via-[#0E0E11] to-[#09090B] shadow-2xl group">
+        
+        <!-- Interactive 3D WebGL Canvas Container -->
+        <div id="three-car-container" class="w-full h-[460px] sm:h-[580px] cursor-grab active:cursor-grabbing relative select-none">
+          <!-- Canvas injected dynamically by Three.js -->
+        </div>
+
+        <!-- Floating Top Overlay: Controls & Logo -->
+        <div class="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-3 z-20 pointer-events-none">
+          <div class="py-1 px-3 rounded-lg bg-black/70 border border-brandRed-500/40 backdrop-blur-md flex items-center gap-2 shadow-lg">
+            <img src="/images/manga_logo.svg" alt="Manga Autos" class="h-6 w-auto object-contain" />
+            <span class="text-xs font-mono uppercase tracking-widest text-brandRed-400 font-bold border-l border-white/20 pl-2">Manga Hyper-GT 3D</span>
+          </div>
+          <div class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-black/60 border border-white/10 backdrop-blur-md text-xs font-mono text-silver-300">
+            <i data-lucide="hand" class="w-3.5 h-3.5 text-brandRed-400"></i>
+            <span>Click & Drag to Rotate</span>
+          </div>
+        </div>
+
+        <!-- Floating Top Right Overlay: Camera Presets -->
+        <div class="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-1.5 z-20">
+          <div class="p-1 rounded-xl bg-black/70 border border-white/15 backdrop-blur-md flex items-center gap-1">
+            <button 
+              type="button" 
+              onclick="set3DCameraAngle('quarter')" 
+              id="cam-btn-quarter" 
+              class="cam-view-btn px-2.5 py-1 rounded-lg text-xs font-mono text-white bg-brandRed-600 shadow-sm transition-all"
+            >
+              3/4 Front
+            </button>
+            <button 
+              type="button" 
+              onclick="set3DCameraAngle('side')" 
+              id="cam-btn-side" 
+              class="cam-view-btn px-2.5 py-1 rounded-lg text-xs font-mono text-silver-400 hover:text-white transition-all"
+            >
+              Profile
+            </button>
+            <button 
+              type="button" 
+              onclick="set3DCameraAngle('rear')" 
+              id="cam-btn-rear" 
+              class="cam-view-btn px-2.5 py-1 rounded-lg text-xs font-mono text-silver-400 hover:text-white transition-all"
+            >
+              Rear Wing
+            </button>
+            <button 
+              type="button" 
+              onclick="set3DCameraAngle('top')" 
+              id="cam-btn-top" 
+              class="cam-view-btn px-2.5 py-1 rounded-lg text-xs font-mono text-silver-400 hover:text-white transition-all"
+            >
+              Aero Top
+            </button>
+          </div>
+        </div>
+
+        <!-- Floating Bottom Overlay: Paint Customizer & Action Bar -->
+        <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 flex flex-col md:flex-row items-center justify-between gap-4 z-20">
+          
+          <!-- Paint Color Palette Switcher -->
+          <div class="p-2.5 rounded-xl bg-black/80 border border-white/20 backdrop-blur-md flex items-center gap-3 shadow-lg">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-silver-300 font-semibold pl-1 hidden sm:inline">Coachwork Paint:</span>
+            <div class="flex items-center gap-2">
+              <button 
+                type="button" 
+                onclick="changeCarColor(0xDC2626, 'Manga Rosso Corsa')" 
+                class="paint-btn w-6 h-6 rounded-full bg-[#DC2626] border-2 border-white ring-2 ring-brandRed-500 shadow-md transition-all hover:scale-110" 
+                title="Manga Rosso Corsa"
+              ></button>
+              <button 
+                type="button" 
+                onclick="changeCarColor(0x111114, 'Obsidian Shadow Nero')" 
+                class="paint-btn w-6 h-6 rounded-full bg-[#111114] border-2 border-white/50 transition-all hover:scale-110" 
+                title="Obsidian Shadow Nero"
+              ></button>
+              <button 
+                type="button" 
+                onclick="changeCarColor(0x52525B, 'Grigio Telesto Carbon')" 
+                class="paint-btn w-6 h-6 rounded-full bg-[#52525B] border-2 border-white/50 transition-all hover:scale-110" 
+                title="Grigio Telesto Carbon"
+              ></button>
+              <button 
+                type="button" 
+                onclick="changeCarColor(0xF4F4F5, 'Bianco Pearl Metallic')" 
+                class="paint-btn w-6 h-6 rounded-full bg-[#F4F4F5] border-2 border-white/50 transition-all hover:scale-110" 
+                title="Bianco Pearl Metallic"
+              ></button>
+              <button 
+                type="button" 
+                onclick="changeCarColor(0x1E3A8A, 'Monaco Cobalt Metallic')" 
+                class="paint-btn w-6 h-6 rounded-full bg-[#1E3A8A] border-2 border-white/50 transition-all hover:scale-110" 
+                title="Monaco Cobalt Metallic"
+              ></button>
+            </div>
+            <span id="paint-label" class="text-xs font-mono text-brandRed-400 font-semibold border-l border-white/20 pl-3">Manga Rosso Corsa</span>
+          </div>
+
+          <!-- Feature Toggles: Auto-Rotate, Headlights, Active Spoiler -->
+          <div class="flex items-center gap-2 flex-wrap justify-center">
+            <button 
+              type="button" 
+              id="toggle-autorotate-btn" 
+              onclick="toggle3DAutoRotate()" 
+              class="px-3 py-1.5 rounded-lg bg-black/80 hover:bg-black/95 text-white border border-brandRed-500/50 backdrop-blur-md text-xs font-mono flex items-center gap-1.5 transition-all shadow-md"
+            >
+              <i data-lucide="rotate-3d" class="w-3.5 h-3.5 text-brandRed-400"></i>
+              <span id="autorotate-label">Rotation: ON</span>
+            </button>
+
+            <button 
+              type="button" 
+              id="toggle-headlights-btn" 
+              onclick="toggle3DHeadlights()" 
+              class="px-3 py-1.5 rounded-lg bg-black/80 hover:bg-black/95 text-white border border-white/20 backdrop-blur-md text-xs font-mono flex items-center gap-1.5 transition-all shadow-md"
+            >
+              <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span id="headlights-label">LEDs: ON</span>
+            </button>
+
+            <button 
+              type="button" 
+              onclick="openPrivateViewingModal('3D Custom Build Allocation')" 
+              class="px-4 py-1.5 rounded-lg bg-brandRed-600 hover:bg-brandRed-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-red-glow flex items-center gap-1.5"
+            >
+              <i data-lucide="clipboard-check" class="w-3.5 h-3.5"></i>
+              <span>Order Spec</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Quick 3D Telemetry Stats -->
+      <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-mono">
+        <div class="p-3 rounded-xl bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border flex items-center gap-2.5">
+          <i data-lucide="move-3d" class="w-4 h-4 text-brandRed-500"></i>
+          <div>
+            <div class="text-[10px] text-charcoal-500 dark:text-silver-500 uppercase">Interactive Orbit</div>
+            <div class="font-bold text-charcoal-900 dark:text-white">360° Free Yaw & Pitch</div>
+          </div>
+        </div>
+        <div class="p-3 rounded-xl bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border flex items-center gap-2.5">
+          <i data-lucide="palette" class="w-4 h-4 text-brandRed-500"></i>
+          <div>
+            <div class="text-[10px] text-charcoal-500 dark:text-silver-500 uppercase">Finish Formulation</div>
+            <div class="font-bold text-charcoal-900 dark:text-white">Tri-Coat Pearlescent</div>
+          </div>
+        </div>
+        <div class="p-3 rounded-xl bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border flex items-center gap-2.5">
+          <i data-lucide="wind" class="w-4 h-4 text-brandRed-500"></i>
+          <div>
+            <div class="text-[10px] text-charcoal-500 dark:text-silver-500 uppercase">Aerodynamics</div>
+            <div class="font-bold text-charcoal-900 dark:text-white">Carbon Ground Effects</div>
+          </div>
+        </div>
+        <div class="p-3 rounded-xl bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border flex items-center gap-2.5">
+          <i data-lucide="shield-check" class="w-4 h-4 text-brandRed-500"></i>
+          <div>
+            <div class="text-[10px] text-charcoal-500 dark:text-silver-500 uppercase">Inspection Quality</div>
+            <div class="font-bold text-charcoal-900 dark:text-white">Manga Atelier Certified</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 2. CURATED COLLECTION (Interactive Grid) ================= -->
+  <section id="inventory" class="py-20 bg-alabaster dark:bg-obsidian border-t border-lightSurface-border dark:border-surface-border transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header & Filter Controls -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="text-xs uppercase font-mono tracking-widest text-brandRed-500 font-bold block mb-2">Showroom Vault</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-charcoal-900 dark:text-white">
+            Curated Showroom Collection
+          </h2>
+          <p class="text-sm text-charcoal-600 dark:text-silver-400 mt-2 max-w-xl font-light">
+            Each vehicle in our Maitama showroom carries authenticated Federal Ministry of Finance & Nigeria Customs Service clearance documentation.
+          </p>
+        </div>
+
+        <!-- Filter Segmented Tabs & Sort -->
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Segmented Tab Group -->
+          <div class="inline-flex p-1 bg-white dark:bg-surface-card border border-lightSurface-border dark:border-surface-border rounded-lg text-xs shadow-sm" role="tablist">
+            <button type="button" onclick="setCategoryTab('all')" id="tab-all" class="category-tab px-3.5 py-1.5 rounded font-medium transition-all bg-brandRed-500 text-white font-semibold shadow-sm">
+              All Collection
+            </button>
+            <button type="button" onclick="setCategoryTab('supercar')" id="tab-supercar" class="category-tab px-3.5 py-1.5 rounded font-medium transition-all text-charcoal-600 dark:text-silver-400 hover:text-black dark:hover:text-white">
+              Supercars & Track
+            </button>
+            <button type="button" onclick="setCategoryTab('executive')" id="tab-executive" class="category-tab px-3.5 py-1.5 rounded font-medium transition-all text-charcoal-600 dark:text-silver-400 hover:text-black dark:hover:text-white">
+              Executive SUVs
+            </button>
+            <button type="button" onclick="setCategoryTab('imports')" id="tab-imports" class="category-tab px-3.5 py-1.5 rounded font-medium transition-all text-charcoal-600 dark:text-silver-400 hover:text-black dark:hover:text-white">
+              Latest Imports
+            </button>
+          </div>
+
+          <!-- Sort Select -->
+          <div class="relative">
+            <select id="sort-select" onchange="applyFilters()" class="bg-white dark:bg-surface-card border border-lightSurface-border dark:border-surface-border text-charcoal-800 dark:text-silver-300 text-xs rounded-lg px-3 py-2 pr-7 appearance-none focus:outline-none focus:border-brandRed-500 transition-colors shadow-sm">
+              <option value="featured">Sort: Featured First</option>
+              <option value="price-desc">Price: Highest to Lowest</option>
+              <option value="price-asc">Price: Lowest to Highest</option>
+              <option value="power-desc">Performance: Most Powerful</option>
+            </select>
+            <i data-lucide="arrow-down-up" class="w-3.5 h-3.5 text-charcoal-400 dark:text-silver-500 absolute right-2.5 top-2.5 pointer-events-none"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vehicle Card Grid Container -->
+      <div id="vehicle-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden text-center py-20 border border-dashed border-surface-border rounded-2xl bg-surface-subtle">
+        <i data-lucide="car" class="w-12 h-12 text-silver-500 mx-auto mb-4 stroke-1"></i>
+        <h3 class="text-lg font-display text-white font-semibold">No Matching Vehicles in Abuja Inventory</h3>
+        <p class="text-sm text-silver-400 max-w-md mx-auto mt-2">
+          We can procure and clear your exact desired specification directly through our European and North American auction desk.
+        </p>
+        <button type="button" onclick="openBespokeModal()" class="mt-5 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-brandRed-600 hover:bg-brandRed-500 rounded transition-all shadow-md">
+          Request Bespoke Sourcing
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 3. "VERIFIED PROVENANCE" TRUST BADGES ================= -->
+  <section id="provenance" class="py-20 bg-lightSurface-subtle dark:bg-surface-subtle border-t border-lightSurface-border dark:border-surface-border relative transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs uppercase font-mono tracking-widest text-brandRed-500 font-bold block mb-2">Uncompromising Compliance</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-charcoal-900 dark:text-white [text-wrap:balance]">
+          Verified Provenance & Customs Integrity
+        </h2>
+        <p class="text-sm sm:text-base text-charcoal-600 dark:text-silver-400 mt-3 font-light [text-wrap:balance]">
+          In the Nigerian luxury market, legitimate documentation is the ultimate hallmark of true prestige. Manga Autos eliminates all compliance ambiguity.
+        </p>
+      </div>
+
+      <!-- Official Manga Automobiles Seal of Integrity Banner -->
+      <div class="glass-gold-subtle rounded-2xl p-6 sm:p-8 mb-12 border border-brandRed-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-card-lift relative overflow-hidden transition-colors">
+        <div class="absolute -right-8 -bottom-8 w-72 h-72 opacity-[0.04] dark:opacity-5 pointer-events-none select-none">
+          <img src="/images/manga_logo.svg" alt="" class="manga-brand-logo w-full h-full object-contain" />
+        </div>
+        <div class="flex flex-col sm:flex-row items-center sm:items-start md:items-center gap-5 relative z-10 text-center sm:text-left">
+          <div class="h-16 sm:h-20 w-auto p-2.5 bg-white dark:bg-obsidian/90 rounded-xl border border-brandRed-500/40 shadow-md dark:shadow-red-glow shrink-0 flex items-center justify-center">
+            <img src="/images/manga_logo.svg" alt="Manga Automobiles Official Marque" class="manga-brand-logo h-full w-auto object-contain" />
+          </div>
+          <div>
+            <div class="flex items-center justify-center sm:justify-start gap-2 mb-1">
+              <span class="text-xs uppercase font-mono tracking-widest text-brandRed-500 dark:text-brandRed-400 font-bold">The Maitama Standard</span>
+              <span class="text-silver-400 dark:text-silver-500">·</span>
+              <span class="text-xs text-charcoal-600 dark:text-silver-300 font-mono">Guaranteed Title Provenance</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-display font-bold text-charcoal-900 dark:text-white">The Manga Automobiles Assurance Protocol</h3>
+            <p class="text-xs sm:text-sm text-charcoal-600 dark:text-silver-400 mt-1 max-w-xl font-light">
+              Every vehicle bearing the Manga Automobiles marque undergoes biometric customs authentication, forensic title verification, and dynamometer mechanical certification prior to showroom induction.
+            </p>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center gap-3 relative z-10">
+          <div class="text-right hidden lg:block">
+            <div class="text-xs font-mono text-brandRed-500 dark:text-brandRed-400 font-bold">100% NCS Verified</div>
+            <div class="text-[11px] text-charcoal-500 dark:text-silver-400">RC: 1294821 Abuja</div>
+          </div>
+          <button type="button" onclick="openPrivateViewingModal('Provenance & Customs Inspection')" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-brandRed-600 hover:bg-brandRed-500 rounded-lg transition-all shadow-md hover:shadow-red-glow whitespace-nowrap">
+            Verify a Chassis
+          </button>
+        </div>
+      </div>
+
+      <!-- Pillars of Assurance Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Pillar 1 -->
+        <div class="glass-panel rounded-xl p-8 border border-lightSurface-border dark:border-surface-border hover:border-brandRed-500/40 transition-colors group">
+          <div class="w-12 h-12 rounded-lg bg-brandRed-500/10 border border-brandRed-500/20 text-brandRed-500 dark:text-brandRed-400 flex items-center justify-center mb-6 group-hover:bg-brandRed-500 group-hover:text-white transition-all">
+            <i data-lucide="file-check-2" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-display font-bold text-charcoal-900 dark:text-white mb-3">100% Customs Duty Certification</h3>
+          <p class="text-sm text-charcoal-600 dark:text-silver-400 leading-relaxed font-light">
+            Every vehicle is delivered with its authenticated Single Goods Declaration (SGD), verified Customs Assessment Notice, and traceable NCS C-Number. Guaranteed zero federal impoundment or penalty exposure.
+          </p>
+          <div class="mt-6 pt-4 border-t border-lightSurface-border dark:border-surface-border/60 flex items-center gap-2 text-xs text-charcoal-500 dark:text-silver-500 font-mono">
+            <i data-lucide="check" class="w-3.5 h-3.5 text-brandRed-500"></i>
+            <span>Federal Ministry of Finance Validated</span>
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="glass-panel rounded-xl p-8 border border-lightSurface-border dark:border-surface-border hover:border-brandRed-500/40 transition-colors group">
+          <div class="w-12 h-12 rounded-lg bg-brandRed-500/10 border border-brandRed-500/20 text-brandRed-500 dark:text-brandRed-400 flex items-center justify-center mb-6 group-hover:bg-brandRed-500 group-hover:text-white transition-all">
+            <i data-lucide="snowflake" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-display font-bold text-charcoal-900 dark:text-white mb-3">Air-Conditioned Showroom Inspection</h3>
+          <p class="text-sm text-charcoal-600 dark:text-silver-400 leading-relaxed font-light">
+            Experience our private viewing bays located at No. 34 Shehu Shagari Way, Maitama. Fully climate-controlled gallery environment, high-CRI color rendering inspection lights, and dedicated master technicians.
+          </p>
+          <div class="mt-6 pt-4 border-t border-lightSurface-border dark:border-surface-border/60 flex items-center gap-2 text-xs text-charcoal-500 dark:text-silver-500 font-mono">
+            <i data-lucide="check" class="w-3.5 h-3.5 text-brandRed-500"></i>
+            <span>VIP Client Hospitality Lounge</span>
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="glass-panel rounded-xl p-8 border border-lightSurface-border dark:border-surface-border hover:border-brandRed-500/40 transition-colors group">
+          <div class="w-12 h-12 rounded-lg bg-brandRed-500/10 border border-brandRed-500/20 text-brandRed-500 dark:text-brandRed-400 flex items-center justify-center mb-6 group-hover:bg-brandRed-500 group-hover:text-white transition-all">
+            <i data-lucide="shield-check" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-display font-bold text-charcoal-900 dark:text-white mb-3">Nationwide Enclosed Trailer Delivery</h3>
+          <p class="text-sm text-charcoal-600 dark:text-silver-400 leading-relaxed font-light">
+            From Abuja to Lagos (Banana Island / Ikoyi), Port Harcourt, Kano, or Enugu—your acquisition travels in custom hydraulic enclosed trailers with comprehensive marine/transit insurance and live GPS tracking.
+          </p>
+          <div class="mt-6 pt-4 border-t border-lightSurface-border dark:border-surface-border/60 flex items-center gap-2 text-xs text-charcoal-500 dark:text-silver-500 font-mono">
+            <i data-lucide="check" class="w-3.5 h-3.5 text-brandRed-500"></i>
+            <span>Zero-Mileage White-Glove Handover</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 4. BESPOKE SOURCING SHOWCASE BANNER ================= -->
+  <section id="concierge" class="py-20 bg-alabaster dark:bg-obsidian border-t border-lightSurface-border dark:border-surface-border relative overflow-hidden transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="glass-gold-subtle rounded-2xl p-8 sm:p-12 relative overflow-hidden border border-brandRed-500/30 flex flex-col lg:flex-row items-center justify-between gap-10">
+        
+        <div class="max-w-2xl">
+          <div class="inline-flex items-center gap-2 text-xs font-mono text-brandRed-500 dark:text-brandRed-400 uppercase tracking-widest font-bold mb-3">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>Global Procurement Desk</span>
+          </div>
+          <h2 class="font-display text-3xl sm:text-5xl font-bold text-charcoal-900 dark:text-white mb-4 [text-wrap:balance]">
+            Seeking an Ultra-Rare Specification?
+          </h2>
+          <p class="text-charcoal-600 dark:text-silver-300 text-sm sm:text-base leading-relaxed mb-8 font-light">
+            Can’t find the exact paint-to-sample Porsche, bespoke Rolls-Royce Cullinan, or limited edition V12 supercar in stock? Our international procurement team sources directly from private collectors, official factory allocations, and Tier-1 auctions in Germany, the UK, and North America.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <button type="button" onclick="openBespokeModal()" class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-white bg-brandRed-600 hover:bg-brandRed-500 rounded-lg transition-all shadow-md hover:shadow-red-glow">
+              Launch Bespoke Sourcing Request
+            </button>
+            <a href="https://wa.me/2348096264228?text=Hello%20Manga%20Autos%20Concierge%2C%20I%20am%20inquiring%20about%20bespoke%20vehicle%20sourcing%20to%20Nigeria." target="_blank" rel="noopener noreferrer" class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-charcoal-900 dark:text-white border border-lightSurface-border dark:border-surface-border bg-white dark:bg-surface-card hover:bg-lightSurface-elevated dark:hover:bg-surface-elevated rounded-lg transition-all flex items-center gap-2 shadow-sm">
+              <i data-lucide="message-circle" class="w-4 h-4 text-emerald-500"></i>
+              <span>Direct WhatsApp Desk</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="shrink-0 flex flex-col items-center text-center p-6 rounded-2xl border border-brandRed-500/30 bg-white/90 dark:bg-surface-card/80 backdrop-blur-md shadow-card-lift">
+          <div class="py-3 px-4 rounded-xl bg-lightSurface-subtle dark:bg-obsidian border border-brandRed-500/40 shadow-sm dark:shadow-red-glow mb-3">
+            <img src="/images/manga_logo.svg" alt="Manga Automobiles Marque" class="manga-brand-logo h-14 sm:h-16 w-auto object-contain" />
+          </div>
+          <span class="text-[11px] font-mono uppercase tracking-widest text-brandRed-500 dark:text-brandRed-400 font-bold mt-1">Private Client Brokerage Desk</span>
+          <span class="text-xs text-charcoal-600 dark:text-silver-300 mt-0.5 font-medium">Stuttgart · London · Abuja</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. PRIVATE VIEWING SUITE / EXPERIENCE ================= -->
+  <section id="experience" class="py-20 bg-lightSurface-subtle dark:bg-surface-subtle border-t border-lightSurface-border dark:border-surface-border transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
+        <div>
+          <span class="text-xs uppercase font-mono tracking-widest text-brandRed-500 font-bold block mb-2">Exclusive Access</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-charcoal-900 dark:text-white mb-6">
+            The Maitama Private Suite
+          </h2>
+          <p class="text-charcoal-600 dark:text-silver-400 text-sm sm:text-base leading-relaxed mb-6 font-light">
+            We recognize that our patrons require total discretion, rigorous technical transparency, and an environment befitting acquisitions of this caliber. 
+          </p>
+          
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded bg-brandRed-500/10 border border-brandRed-500/20 text-brandRed-500 dark:text-brandRed-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-charcoal-900 dark:text-white">Full Privacy Protocols</h4>
+                <p class="text-xs text-charcoal-600 dark:text-silver-400 mt-0.5">Showroom floor access can be reserved exclusively for you and your technical delegation.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded bg-brandRed-500/10 border border-brandRed-500/20 text-brandRed-500 dark:text-brandRed-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="wrench" class="w-3.5 h-3.5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-charcoal-900 dark:text-white">Hydraulic Lift & Diagnostic Telemetry</h4>
+                <p class="text-xs text-charcoal-600 dark:text-silver-400 mt-0.5">Bring your chosen technical inspector to examine underbody aerodynamics, suspension integrity, and live ECU readings.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded bg-brandRed-500/10 border border-brandRed-500/20 text-brandRed-500 dark:text-brandRed-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="coffee" class="w-3.5 h-3.5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-charcoal-900 dark:text-white">Executive Hospitality Lounge</h4>
+                <p class="text-xs text-charcoal-600 dark:text-silver-400 mt-0.5">Fine Italian espresso and luxury private boardroom for contractual and wire transfer settlements.</p>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" onclick="openPrivateViewingModal('Maitama Showroom Private Suite')" class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-white bg-brandRed-600 hover:bg-brandRed-500 rounded-lg transition-all shadow-md hover:shadow-red-glow">
+            Schedule Private Appointment
+          </button>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden border border-lightSurface-border dark:border-surface-border bg-white dark:bg-surface-card p-2 shadow-xl">
+          <div class="aspect-video w-full rounded-xl overflow-hidden relative">
+            <img 
+              src="/images/hero_manga_autos_1790500446110.jpg" 
+              alt="Manga Autos VIP Viewing Suite" 
+              class="w-full h-full object-cover"
+              referrerpolicy="no-referrer"
+              onerror="this.src='/src/assets/images/hero_manga_autos_1790500446110.jpg'"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-6">
+              <span class="text-xs font-mono text-brandRed-400 uppercase tracking-widest font-semibold">Flagship Location</span>
+              <span class="text-lg font-display text-white font-bold">No. 34 Shehu Shagari Way, Maitama, Abuja</span>
+              <span class="text-xs text-silver-300 mt-1">Latitude: 9.0882° N, Longitude: 7.4985° E</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 6. FOOTER ================= -->
+  <footer id="contact" class="bg-[#ECE7DC] dark:bg-[#060607] border-t border-lightSurface-border dark:border-surface-border text-charcoal-700 dark:text-silver-400 pt-16 pb-12 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-lightSurface-border dark:border-surface-border">
+        
+        <!-- Col 1: Brand & Identity with Official Marque Logo -->
+        <div class="space-y-4">
+          <div class="flex flex-col gap-2">
+            <div class="py-1.5 px-3 rounded-xl bg-white dark:bg-surface-subtle/90 border border-lightSurface-border dark:border-surface-border shadow-sm dark:shadow-none inline-block w-fit">
+              <img src="/images/manga_logo.svg" alt="Manga Automobiles" class="manga-brand-logo h-10 sm:h-12 w-auto object-contain" />
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] tracking-[0.25em] text-brandRed-500 dark:text-brandRed-400 uppercase font-sans font-bold">Maitama · Abuja · Nigeria</span>
+            </div>
+          </div>
+          <p class="text-xs text-charcoal-600 dark:text-silver-400 leading-relaxed font-light">
+            Abuja’s benchmark for exotic supercars, track-bred machines, and executive automotive excellence. 100% genuine customs duty verification guaranteed.
+          </p>
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-white dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-[11px] font-mono text-charcoal-600 dark:text-silver-400">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>RC: 1294821 · NCS Authorized Importer</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Showroom Coordinates -->
+        <div>
+          <h4 class="text-xs uppercase font-mono tracking-widest text-charcoal-900 dark:text-white font-bold mb-4">Showroom Address</h4>
+          <p class="text-xs text-charcoal-700 dark:text-silver-300 leading-relaxed mb-3">
+            No. 34 Shehu Shagari Way,<br />
+            Maitama District,<br />
+            Abuja, Federal Capital Territory, Nigeria.
+          </p>
+          <div class="text-xs text-charcoal-600 dark:text-silver-400 space-y-1">
+            <p><span class="text-charcoal-800 dark:text-silver-300 font-semibold">Mon - Sat:</span> 9:00 AM - 7:00 PM</p>
+            <p><span class="text-charcoal-800 dark:text-silver-300 font-semibold">Sunday:</span> By Private Appointment</p>
+          </div>
+        </div>
+
+        <!-- Col 3: Direct VIP Hotlines -->
+        <div>
+          <h4 class="text-xs uppercase font-mono tracking-widest text-charcoal-900 dark:text-white font-bold mb-4">Concierge & Sales</h4>
+          <ul class="text-xs space-y-2.5">
+            <li>
+              <a href="tel:+2348096264228" class="text-charcoal-700 dark:text-silver-300 hover:text-brandRed-500 dark:hover:text-white transition-colors flex items-center gap-2 font-mono-num font-medium">
+                <i data-lucide="phone" class="w-3.5 h-3.5 text-brandRed-500 dark:text-brandRed-400"></i>
+                <span>+234 (0) 809 626 4228</span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+2349018880000" class="text-charcoal-700 dark:text-silver-300 hover:text-brandRed-500 dark:hover:text-white transition-colors flex items-center gap-2 font-mono-num font-medium">
+                <i data-lucide="phone-call" class="w-3.5 h-3.5 text-brandRed-500 dark:text-brandRed-400"></i>
+                <span>+234 (0) 901 888 0000</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:concierge@mangaautos.ng" class="text-charcoal-700 dark:text-silver-300 hover:text-brandRed-500 dark:hover:text-white transition-colors flex items-center gap-2">
+                <i data-lucide="mail" class="w-3.5 h-3.5 text-brandRed-500 dark:text-brandRed-400"></i>
+                <span>concierge@mangaautos.ng</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Quick Action Triggers -->
+        <div>
+          <h4 class="text-xs uppercase font-mono tracking-widest text-charcoal-900 dark:text-white font-bold mb-4">Instant Concierge</h4>
+          <p class="text-xs text-charcoal-600 dark:text-silver-400 mb-4">Direct communication channel with Manga Autos principal brokers.</p>
+          <div class="space-y-2.5">
+            <a 
+              href="https://wa.me/2348096264228?text=Hello%20Manga%20Autos%20Abuja%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20current%20supercar%20and%20luxury%20collection." 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="w-full py-2.5 px-4 text-xs font-bold uppercase tracking-wider text-white bg-emerald-600 hover:bg-emerald-500 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-sm"
+            >
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <span>WhatsApp Concierge</span>
+            </a>
+            <button 
+              type="button" 
+              onclick="openPrivateViewingModal('Showroom VIP Visit')" 
+              class="w-full py-2 px-4 text-xs font-bold uppercase tracking-wider text-charcoal-800 dark:text-silver-300 hover:text-brandRed-500 dark:hover:text-white border border-lightSurface-border dark:border-surface-border hover:border-brandRed-500 bg-white dark:bg-transparent rounded-lg transition-colors"
+            >
+              Schedule Private Visit
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright & Disclaimer -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-charcoal-500 dark:text-silver-500">
+        <div>
+          © 2015–2026 Manga Autos Limited. All rights reserved. Maitama, Abuja.
+        </div>
+        <div class="flex items-center gap-6">
+          <span>Customs Compliant</span>
+          <span>·</span>
+          <span>Enclosed Nationwide Transit</span>
+          <span>·</span>
+          <span>Terms of Bespoke Brokerage</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= MODAL 1: BESPOKE VEHICLE SOURCING ================= -->
+  <div id="bespoke-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
+    <div class="glass-panel bg-white dark:bg-surface-card border border-lightSurface-border dark:border-surface-border rounded-2xl w-full max-w-xl p-6 sm:p-8 shadow-2xl relative my-8 animate-in fade-in zoom-in-95 duration-200 text-charcoal-900 dark:text-white">
+      
+      <!-- Close button -->
+      <button type="button" onclick="closeBespokeModal()" class="absolute top-5 right-5 text-charcoal-500 dark:text-silver-400 hover:text-black dark:hover:text-white p-1 rounded-lg border border-lightSurface-border dark:border-surface-border bg-lightSurface-elevated dark:bg-surface-subtle" aria-label="Close modal">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Modal Header with Official Marque Emblem -->
+      <div class="flex items-center gap-4 mb-6">
+        <div class="py-1 px-2.5 rounded-xl bg-white dark:bg-surface-subtle border border-brandRed-500/30 shadow-sm dark:shadow-red-glow shrink-0 flex items-center">
+          <img src="/images/manga_logo.svg" alt="Manga Automobiles" class="manga-brand-logo h-9 sm:h-10 w-auto object-contain" />
+        </div>
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-widest text-brandRed-500 dark:text-brandRed-400 font-bold mb-0.5">
+            <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+            <span>Global Auction & Factory Allocation</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-display font-bold text-charcoal-900 dark:text-white">Bespoke Vehicle Sourcing</h3>
+          <p class="text-xs text-charcoal-600 dark:text-silver-400 mt-0.5 font-light">
+            Direct importation with authenticated Nigeria Customs Single Goods Clearance.
+          </p>
+        </div>
+      </div>
+
+      <!-- Form Content -->
+      <form id="bespoke-form" onsubmit="handleBespokeSubmit(event)" class="space-y-4">
+        
+        <div>
+          <label for="src-make-model" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1 font-medium">Desired Make & Model *</label>
+          <input 
+            type="text" 
+            id="src-make-model" 
+            required 
+            placeholder="e.g. 2024 Porsche 911 GT3 RS / Rolls-Royce Cullinan" 
+            class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2.5 focus:outline-none focus:border-brandRed-500 transition-colors"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="src-year-range" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1 font-medium">Model Year Range *</label>
+            <select id="src-year-range" required class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2.5 focus:outline-none focus:border-brandRed-500 transition-colors">
+              <option value="2025 - 2026 (Brand New / Factory Order)">2025 - 2026 (Brand New / Factory Order)</option>
+              <option value="2023 - 2024 (Collector / Low Mileage)">2023 - 2024 (Collector / Low Mileage)</option>
+              <option value="2020 - 2022 (Approved Pre-Owned)">2020 - 2022 (Approved Pre-Owned)</option>
+              <option value="Classic / Heritage Spec">Classic / Heritage Spec</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="src-destination" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1 font-medium">Destination Delivery City *</label>
+            <select id="src-destination" required class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2.5 focus:outline-none focus:border-brandRed-500 transition-colors">
+              <option value="Abuja (Maitama / Guzape / Asokoro)">Abuja (Maitama / Guzape / Asokoro)</option>
+              <option value="Lagos (Ikoyi / Victoria Island / Banana Island)">Lagos (Ikoyi / Victoria Island / Banana Island)</option>
+              <option value="Port Harcourt (GRA)">Port Harcourt (GRA)</option>
+              <option value="Kano">Kano</option>
+              <option value="Other Nigeria City">Other Nigeria City</option>
+              <option value="International Escrow">International Escrow</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="src-budget" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1 font-medium">Target Maximum Budget (₦ / $) *</label>
+          <input 
+            type="text" 
+            id="src-budget" 
+            required 
+            placeholder="e.g. ₦150,000,000 or $120,000" 
+            class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2.5 focus:outline-none focus:border-brandRed-500 transition-colors"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="src-name" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1 font-medium">Client Name / Title *</label>
+            <input 
+              type="text" 
+              id="src-name" 
+              required 
+              placeholder="e.g. Alhaji / Chief / Dr. Aminu" 
+              class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2.5 focus:outline-none focus:border-brandRed-500 transition-colors"
+            />
+          </div>
+
+          <div>
+            <label for="src-phone" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1 font-medium">Client Phone / WhatsApp *</label>
+            <input 
+              type="tel" 
+              id="src-phone" 
+              required 
+              placeholder="e.g. +234 803 000 0000" 
+              class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2.5 focus:outline-none focus:border-brandRed-500 transition-colors"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="src-notes" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1 font-medium">Bespoke Specifications / Colors (Optional)</label>
+          <textarea 
+            id="src-notes" 
+            rows="2" 
+            placeholder="Preferred exterior paint, carbon aerodynamic packs, interior leather hide, ceramic brakes..." 
+            class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2 focus:outline-none focus:border-brandRed-500 transition-colors resize-none"
+          ></textarea>
+        </div>
+
+        <div class="pt-2 flex items-center justify-end gap-3">
+          <button type="button" onclick="closeBespokeModal()" class="px-4 py-2.5 text-xs text-charcoal-600 dark:text-silver-400 hover:text-black dark:hover:text-white rounded-lg border border-lightSurface-border dark:border-surface-border">
+            Cancel
+          </button>
+          <button type="submit" class="px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-brandRed-600 hover:bg-brandRed-500 rounded-lg transition-all shadow-md hover:shadow-red-glow">
+            Submit Sourcing Dossier
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Confirmation State -->
+      <div id="bespoke-confirmation" class="hidden text-center py-6">
+        <div class="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 flex items-center justify-center mx-auto mb-4">
+          <i data-lucide="check-circle-2" class="w-7 h-7"></i>
+        </div>
+        <h4 class="text-xl font-display font-bold text-charcoal-900 dark:text-white">Sourcing Dossier Registered</h4>
+        <p class="text-xs text-charcoal-600 dark:text-silver-400 mt-2 max-w-sm mx-auto">
+          Your dossier has been generated with Reference Code <span id="confirmed-ref" class="text-brandRed-500 dark:text-brandRed-400 font-mono font-bold">MGA-SRC-2026</span>. Our Lead Sourcing Director will contact you within 4 business hours.
+        </p>
+        <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a id="forward-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-emerald-600 hover:bg-emerald-500 rounded-lg flex items-center justify-center gap-2 shadow-sm">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Forward Directly via WhatsApp</span>
+          </a>
+          <button type="button" onclick="closeBespokeModal()" class="w-full sm:w-auto px-5 py-2.5 text-xs text-charcoal-700 dark:text-silver-300 border border-lightSurface-border dark:border-surface-border hover:bg-lightSurface-elevated dark:hover:bg-surface-elevated rounded-lg">
+            Done
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= MODAL 2: REQUEST PRIVATE VIEWING ================= -->
+  <div id="viewing-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
+    <div class="glass-panel bg-white dark:bg-surface-card border border-lightSurface-border dark:border-surface-border rounded-2xl w-full max-w-lg p-6 sm:p-8 shadow-2xl relative my-8 animate-in fade-in zoom-in-95 duration-200 text-charcoal-900 dark:text-white">
+      
+      <!-- Close button -->
+      <button type="button" onclick="closePrivateViewingModal()" class="absolute top-5 right-5 text-charcoal-500 dark:text-silver-400 hover:text-black dark:hover:text-white p-1 rounded-lg border border-lightSurface-border dark:border-surface-border bg-lightSurface-elevated dark:bg-surface-subtle" aria-label="Close modal">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Modal Header with Official Marque Emblem -->
+      <div class="flex items-center gap-4 mb-6">
+        <div class="py-1 px-2.5 rounded-xl bg-white dark:bg-surface-subtle border border-brandRed-500/30 shadow-sm dark:shadow-red-glow shrink-0 flex items-center">
+          <img src="/images/manga_logo.svg" alt="Manga Automobiles" class="manga-brand-logo h-9 sm:h-10 w-auto object-contain" />
+        </div>
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-widest text-brandRed-500 dark:text-brandRed-400 font-bold mb-0.5">
+            <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+            <span>Maitama Showroom Appointment</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-display font-bold text-charcoal-900 dark:text-white">Request Private Viewing</h3>
+          <p class="text-xs text-charcoal-600 dark:text-silver-400 mt-0.5 font-light">
+            Confidential inspection at No. 34 Shehu Shagari Way, Maitama.
+          </p>
+        </div>
+      </div>
+
+      <!-- Viewing Form -->
+      <form id="viewing-form" onsubmit="handleViewingSubmit(event)" class="space-y-4">
+        
+        <div>
+          <label for="view-vehicle-target" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1 font-medium">Vehicle of Interest</label>
+          <input 
+            type="text" 
+            id="view-vehicle-target" 
+            readonly 
+            class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-brandRed-500 dark:text-brandRed-400 font-bold text-sm rounded-lg px-3 py-2.5 cursor-not-allowed"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="view-date" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1 font-medium">Preferred Date *</label>
+            <input 
+              type="date" 
+              id="view-date" 
+              required 
+              class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2.5 focus:outline-none focus:border-brandRed-500 transition-colors"
+            />
+          </div>
+
+          <div>
+            <label for="view-time" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1 font-medium">Preferred Slot *</label>
+            <select id="view-time" required class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2.5 focus:outline-none focus:border-brandRed-500 transition-colors">
+              <option value="Morning (10:00 AM - 12:00 PM)">Morning (10:00 AM - 12:00 PM)</option>
+              <option value="Afternoon (1:00 PM - 3:00 PM)">Afternoon (1:00 PM - 3:00 PM)</option>
+              <option value="Late Afternoon (4:00 PM - 6:00 PM)">Late Afternoon (4:00 PM - 6:00 PM)</option>
+              <option value="VIP Evening (After 6:30 PM by Special Request)">VIP Evening (After 6:30 PM)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="view-client-name" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1 font-medium">Your Name *</label>
+            <input 
+              type="text" 
+              id="view-client-name" 
+              required 
+              placeholder="e.g. Chief O. Ibrahim" 
+              class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2.5 focus:outline-none focus:border-brandRed-500 transition-colors"
+            />
+          </div>
+
+          <div>
+            <label for="view-client-phone" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1 font-medium">Phone / WhatsApp Number *</label>
+            <input 
+              type="tel" 
+              id="view-client-phone" 
+              required 
+              placeholder="e.g. +234 803 123 4567" 
+              class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2.5 focus:outline-none focus:border-brandRed-500 transition-colors"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="view-hospitality" class="block text-xs uppercase tracking-wider text-charcoal-700 dark:text-silver-400 mb-1 font-medium">VIP Hospitality Preference</label>
+          <select id="view-hospitality" class="w-full bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-charcoal-900 dark:text-white text-sm rounded-lg px-3 py-2.5 focus:outline-none focus:border-brandRed-500 transition-colors">
+            <option value="Espresso & Sparkling Water">Espresso & San Pellegrino Sparkling Water</option>
+            <option value="Green Tea & Light Patisserie">Green Tea & Artisanal Patisserie</option>
+            <option value="Signature Refreshment & Private Boardroom">Private Boardroom Protocol</option>
+          </select>
+        </div>
+
+        <div class="pt-2 flex items-center justify-end gap-3">
+          <button type="button" onclick="closePrivateViewingModal()" class="px-4 py-2.5 text-xs text-charcoal-600 dark:text-silver-400 hover:text-black dark:hover:text-white rounded-lg border border-lightSurface-border dark:border-surface-border">
+            Cancel
+          </button>
+          <button type="submit" class="px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-brandRed-600 hover:bg-brandRed-500 rounded-lg transition-all shadow-md hover:shadow-red-glow">
+            Confirm Viewing Request
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Viewing Confirmation -->
+      <div id="viewing-confirmation" class="hidden text-center py-6">
+        <div class="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 flex items-center justify-center mx-auto mb-4">
+          <i data-lucide="check-circle-2" class="w-7 h-7"></i>
+        </div>
+        <h4 class="text-xl font-display font-bold text-charcoal-900 dark:text-white">Private Viewing Reserved</h4>
+        <p class="text-xs text-charcoal-600 dark:text-silver-400 mt-2 max-w-sm mx-auto">
+          Our Maitama Showroom Concierge has logged your reservation for <span id="confirmed-viewing-car" class="text-brandRed-500 dark:text-brandRed-400 font-bold"></span>. An access invitation card has been prepared.
+        </p>
+        <div class="mt-6">
+          <a id="forward-viewing-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-emerald-600 hover:bg-emerald-500 rounded-lg transition-colors shadow-sm">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Confirm Instant Slot on WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= MODAL 3: TECHNICAL DOSSIER / SPEC SHEET ================= -->
+  <div id="dossier-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
+    <div class="glass-panel border border-surface-border rounded-2xl w-full max-w-2xl p-6 sm:p-8 shadow-2xl relative my-8 animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Close button -->
+      <button type="button" onclick="closeDossierModal()" class="absolute top-5 right-5 text-silver-400 hover:text-white p-1 rounded-lg border border-surface-border bg-surface-subtle" aria-label="Close modal">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div id="dossier-content">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= TOAST NOTIFICATION CONTAINER ================= -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden glass-panel border border-brandRed-500/40 text-white px-4 py-3 rounded-lg shadow-xl text-xs flex items-center gap-3">
+    <i data-lucide="info" class="w-4 h-4 text-brandRed-400 shrink-0"></i>
+    <span id="toast-message">Action completed successfully.</span>
+  </div>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    /*
+     * MANGA AUTOS ABUJA - TECHNICAL & INTERACTIVE CORE
+     * 1. Data Store for 6 Curated Vehicles
+     * 2. Live Filtering & Tab State
+     * 3. Real-Time Currency Conversion (NGN / USD)
+     * 4. Automated WhatsApp Direct Inquiry Link Generator
+     * 5. Modal Controllers
+     */
+
+    // Exchange Rate: ₦1,500 = $1 USD (Official luxury automotive parity)
+    const USD_EXCHANGE_RATE = 1500;
+    let currentCurrency = 'NGN';
+    let currentTab = 'all';
+
+    // 6 Realistic Vehicles as specified in User Prompt
+    const VEHICLES = [
+      {
+        id: 'lamborghini-svj-2024',
+        name: '2024 Lamborghini Aventador SVJ',
+        subtitle: 'Super Veloce Jota · Final Atmospheric V12 Flagship',
+        make: 'Lamborghini',
+        style: 'Supercar',
+        category: ['supercar', 'imports'],
+        priceNgn: 907500000, // ₦907,500,000
+        image: '/images/car_lamborghini_svj_1790500457338.jpg',
+        fallbackImage: '/src/assets/images/car_lamborghini_svj_1790500457338.jpg',
+        specs: {
+          engine: '6.5L Naturally Aspirated V12',
+          engineType: 'V12',
+          hp: 759,
+          acceleration: '0-100 km/h in 2.8s',
+          zeroToSixty: '2.8s (0-100 km/h)',
+          topSpeed: '352 km/h',
+          transmission: '7-Speed ISR Independent Shifting Rods',
+          drivetrain: 'All-Wheel Drive with Haldex Gen. IV'
+        },
+        exteriorColor: 'Grigio Telesto Carbon Edition',
+        interiorColor: 'Nero Cosmus Alcantara with Giallo Belenus Stitching',
+        mileage: '1,200 km (Collector Grade)',
+        customsClearanceCode: 'NCS-SGD-ABJ-88192-2024',
+        customsDutyStatus: '100% Genuine Customs Clearance · Verified Single Entry',
+        provenanceNotes: 'Direct European allocation. Factory ALA 2.0 active aerodynamics, forged carbon accents, carbon ceramic brakes, telemetry logger.'
+      },
+      {
+        id: 'mercedes-c300-2025',
+        name: '2025 Mercedes-Benz C300 4MATIC',
+        subtitle: 'AMG Line Edition · Executive Luxury Sedan',
+        make: 'Mercedes-Benz',
+        style: 'Executive Sedan',
+        category: ['executive', 'imports'],
+        priceNgn: 79200000, // ₦79,200,000
+        image: '/images/car_mercedes_c300_1790500500876.jpg',
+        fallbackImage: '/src/assets/images/car_mercedes_c300_1790500500876.jpg',
+        specs: {
+          engine: '2.0L Turbocharged Inline-4 with 48V Mild-Hybrid EQ Boost',
+          engineType: 'Hybrid',
+          hp: 255,
+          acceleration: '0-100 km/h in 6.0s',
+          zeroToSixty: '6.0s (0-100 km/h)',
+          topSpeed: '250 km/h (Electronically Limited)',
+          transmission: '9G-TRONIC 9-Speed Automatic',
+          drivetrain: '4MATIC Permanent All-Wheel Drive'
+        },
+        exteriorColor: 'Obsidian Black Metallic',
+        interiorColor: 'Sienna Brown / Black Exclusive Nappa Leather',
+        mileage: '0 km (Brand New 2025 Model Year)',
+        customsClearanceCode: 'NCS-SGD-LOS-44102-2025',
+        customsDutyStatus: '100% Genuine Customs Clearance · Port of Lagos Onne Escort',
+        provenanceNotes: 'Equipped with MBUX Navigation with Augmented Reality, Burmester 3D Surround Sound, panoramic glass sliding sunroof, DIGITAL LIGHT package.'
+      },
+      {
+        id: 'bmw-m3-comp-2024',
+        name: '2024 BMW M3 Competition',
+        subtitle: 'M xDrive · 503 HP Track-Focused Performance Sedan',
+        make: 'BMW',
+        style: 'Executive Sedan',
+        category: ['supercar', 'executive', 'imports'],
+        priceNgn: 125400000, // ₦125,400,000
+        image: '/images/car_bmw_m3_comp_1790500468977.jpg',
+        fallbackImage: '/src/assets/images/car_bmw_m3_comp_1790500468977.jpg',
+        specs: {
+          engine: '3.0L BMW M TwinPower Turbo Inline-6 (S58)',
+          engineType: 'Twin-Turbo',
+          hp: 503,
+          acceleration: '0-100 km/h in 3.4s',
+          zeroToSixty: '3.4s (0-100 km/h)',
+          topSpeed: '290 km/h (M Driver’s Package)',
+          transmission: '8-Speed M Steptronic with Drivelogic',
+          drivetrain: 'M xDrive All-Wheel Drive with 2WD Track Mode'
+        },
+        exteriorColor: 'Isle of Man Green Metallic',
+        interiorColor: 'Kyalami Orange / Black Extended Merino Leather with M Carbon Buckets',
+        mileage: '3,400 km',
+        customsClearanceCode: 'NCS-SGD-ABJ-31908-2024',
+        customsDutyStatus: '100% Genuine Customs Clearance · NCS Verified Clean Title',
+        provenanceNotes: 'Fitted with M Carbon Ceramic Brakes, M Carbon Exterior Package, BMW Curved Display with OS 8.5, Harman Kardon surround audio.'
+      },
+      {
+        id: 'toyota-camry-hybrid-2025',
+        name: '2025 Toyota Camry Hybrid',
+        subtitle: 'Flagship Premium Sedan · Fifth-Gen Toyota Hybrid System',
+        make: 'Toyota',
+        style: 'Executive Sedan',
+        category: ['executive', 'imports'],
+        priceNgn: 52800000, // ₦52,800,000
+        image: '/images/car_camry_hybrid_1790500511522.jpg',
+        fallbackImage: '/src/assets/images/car_camry_hybrid_1790500511522.jpg',
+        specs: {
+          engine: '2.5L 4-Cylinder Dynamic Force Engine + Dual Electric Motors',
+          engineType: 'Hybrid',
+          hp: 225,
+          acceleration: '0-100 km/h in 7.2s',
+          zeroToSixty: '7.2s (0-100 km/h)',
+          topSpeed: '190 km/h',
+          transmission: 'Electronically Controlled Continuously Variable (eCVT)',
+          drivetrain: 'Electronic On-Demand All-Wheel Drive'
+        },
+        exteriorColor: 'Celestial Silver Metallic',
+        interiorColor: 'Black Cockpit Leather with Cockpit Trim Accents',
+        mileage: '0 km (Brand New Delivery)',
+        customsClearanceCode: 'NCS-SGD-LOS-19803-2025',
+        customsDutyStatus: '100% Genuine Customs Clearance · Single Assessment Notice',
+        provenanceNotes: 'Brand new 2025 generation. Toyota Safety Sense 3.0, 12.3-inch multimedia touchscreen, dual Qi wireless charging, JBL 9-speaker audio system.'
+      },
+      {
+        id: 'tesla-model-s-plaid-2024',
+        name: '2024 Tesla Model S Plaid',
+        subtitle: '1,020 HP Tri-Motor Electric Hyper-Sedan',
+        make: 'Tesla',
+        style: 'Supercar',
+        category: ['supercar', 'imports'],
+        priceNgn: 148500000, // ₦148,500,000
+        image: '/images/car_tesla_model_s_plaid_1790500488653.jpg',
+        fallbackImage: '/src/assets/images/car_tesla_model_s_plaid_1790500488653.jpg',
+        specs: {
+          engine: 'Tri-Motor All-Wheel Drive with Carbon-Sleeved Rotors',
+          engineType: 'EV',
+          hp: 1020,
+          acceleration: '0-100 km/h in 2.0s',
+          zeroToSixty: '2.0s (0-100 km/h)',
+          topSpeed: '322 km/h',
+          transmission: 'Single-Speed Fixed Gear',
+          drivetrain: 'Electric Torque Vectoring Tri-Motor AWD'
+        },
+        exteriorColor: 'Midnight Silver Metallic',
+        interiorColor: 'All-White Premium Interior with Carbon Fiber Décor',
+        mileage: '800 km',
+        customsClearanceCode: 'NCS-SGD-ABJ-66512-2024',
+        customsDutyStatus: '100% Genuine Customs Clearance · FIRS Tax Clearance Attached',
+        provenanceNotes: 'Plaid Track Mode enabled, 21-inch Arachnid Wheels, Yoke Steering, 22-speaker 960W audio system with active road noise reduction.'
+      },
+      {
+        id: 'audi-r8-v10-2024',
+        name: '2024 Audi R8 V10 Performance',
+        subtitle: 'Naturally Aspirated 5.2L V10 Supercar · Final Edition',
+        make: 'Audi',
+        style: 'Supercar',
+        category: ['supercar'],
+        priceNgn: 261700000, // ₦261,700,000
+        image: '/images/car_audi_r8_v10_1790500479173.jpg',
+        fallbackImage: '/src/assets/images/car_audi_r8_v10_1790500479173.jpg',
+        specs: {
+          engine: '5.2L FSI Naturally Aspirated V10',
+          engineType: 'V10',
+          hp: 602,
+          acceleration: '0-100 km/h in 3.1s',
+          zeroToSixty: '3.1s (0-100 km/h)',
+          topSpeed: '331 km/h',
+          transmission: '7-Speed S tronic Dual-Clutch',
+          drivetrain: 'quattro Permanent All-Wheel Drive'
+        },
+        exteriorColor: 'Daytona Grey Pearl Effect',
+        interiorColor: 'Fine Nappa Leather Diamond Stitched in Express Red',
+        mileage: '2,100 km',
+        customsClearanceCode: 'NCS-SGD-ABJ-77190-2024',
+        customsDutyStatus: '100% Genuine Customs Clearance · Verified Single Entry',
+        provenanceNotes: 'Laser Light Headlights, Ceramic Brakes with Anthracite Calipers, Carbon Exterior Styling Pack (fixed rear wing, front splitter, side blades), Bang & Olufsen 3D Sound.'
+      }
+    ];
+
+    // Theme Management (Light and Dark Mode)
+    function isDarkMode() {
+      return document.documentElement.classList.contains('dark');
+    }
+
+    function updateThemeAssets(isDark) {
+      // Update all brand logos on the site
+      const logos = document.querySelectorAll('.manga-brand-logo');
+      logos.forEach(logo => {
+        logo.src = isDark ? '/images/manga_logo.svg' : '/images/manga_logo_dark_text.svg';
+      });
+
+      // Update toggle button icons
+      const sunIcon = document.getElementById('theme-icon-sun');
+      const moonIcon = document.getElementById('theme-icon-moon');
+      if (sunIcon && moonIcon) {
+        if (isDark) {
+          sunIcon.classList.remove('hidden');
+          sunIcon.classList.add('block');
+          moonIcon.classList.remove('block');
+          moonIcon.classList.add('hidden');
+        } else {
+          sunIcon.classList.remove('block');
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+          moonIcon.classList.add('block');
+        }
+      }
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const willBeDark = !html.classList.contains('dark');
+      
+      if (willBeDark) {
+        html.classList.add('dark');
+        localStorage.setItem('manga_theme', 'dark');
+        showToast("Switched to Obsidian Dark Mode");
+      } else {
+        html.classList.remove('dark');
+        localStorage.setItem('manga_theme', 'light');
+        showToast("Switched to Alabaster Luxury Light Mode");
+      }
+
+      updateThemeAssets(willBeDark);
+      applyFilters(); // re-render cards with updated theme accents if needed
+    }
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('manga_theme');
+      // Default to dark mode for ultra-luxury exotic brand unless light mode explicitly saved
+      const isDark = savedTheme !== 'light';
+      
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      
+      updateThemeAssets(isDark);
+    }
+
+    // =========================================================================
+    // 3D INTERACTIVE CAR STUDIO (Three.js WebGL Engine)
+    // =========================================================================
+    let threeScene, threeCamera, threeRenderer, threeControls;
+    let carModelGroup;
+    let carBodyMaterials = [];
+    let headlightLights = [];
+    let isAutoRotating = true;
+    let areHeadlightsOn = true;
+    let currentCarColorHex = 0xDC2626;
+
+    function init3DStudio() {
+      const container = document.getElementById('three-car-container');
+      if (!container || typeof THREE === 'undefined') return;
+
+      const width = container.clientWidth || 800;
+      const height = container.clientHeight || 500;
+
+      // 1. Scene
+      threeScene = new THREE.Scene();
+      threeScene.background = new THREE.Color(0x0a0a0c);
+      threeScene.fog = new THREE.FogExp2(0x0a0a0c, 0.035);
+
+      // 2. Camera
+      threeCamera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
+      threeCamera.position.set(5.5, 2.2, 5.5);
+
+      // 3. Renderer with antialiasing & tone mapping
+      threeRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+      threeRenderer.setSize(width, height);
+      threeRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      threeRenderer.shadowMap.enabled = true;
+      threeRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      threeRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+      threeRenderer.toneMappingExposure = 1.1;
+      container.innerHTML = '';
+      container.appendChild(threeRenderer.domElement);
+
+      // 4. OrbitControls
+      if (typeof THREE.OrbitControls !== 'undefined') {
+        threeControls = new THREE.OrbitControls(threeCamera, threeRenderer.domElement);
+        threeControls.enableDamping = true;
+        threeControls.dampingFactor = 0.05;
+        threeControls.maxPolarAngle = Math.PI / 2 - 0.02; // Don't clip below ground
+        threeControls.minDistance = 3.5;
+        threeControls.maxDistance = 10.0;
+        threeControls.target.set(0, 0.6, 0);
+        threeControls.autoRotate = isAutoRotating;
+        threeControls.autoRotateSpeed = 1.2;
+      }
+
+      // 5. Studio Lighting Rig
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+      threeScene.add(ambientLight);
+
+      // Key light (crisp overhead studio softbox)
+      const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
+      keyLight.position.set(5, 8, 5);
+      keyLight.castShadow = true;
+      keyLight.shadow.mapSize.width = 2048;
+      keyLight.shadow.mapSize.height = 2048;
+      keyLight.shadow.bias = -0.0001;
+      threeScene.add(keyLight);
+
+      // Rim light for sharp silhouette
+      const rimLight = new THREE.DirectionalLight(0xdc2626, 2.5);
+      rimLight.position.set(-6, 4, -5);
+      threeScene.add(rimLight);
+
+      // Fill light for underbody
+      const fillLight = new THREE.DirectionalLight(0x94a3b8, 1.0);
+      fillLight.position.set(0, -2, 4);
+      threeScene.add(fillLight);
+
+      // 6. Luxury Reflective Studio Floor Grid & Disc
+      const floorGeo = new THREE.PlaneGeometry(30, 30);
+      const floorMat = new THREE.MeshStandardMaterial({
+        color: 0x08080a,
+        roughness: 0.25,
+        metalness: 0.8
+      });
+      const floor = new THREE.Mesh(floorGeo, floorMat);
+      floor.rotation.x = -Math.PI / 2;
+      floor.receiveShadow = true;
+      threeScene.add(floor);
+
+      // Concentric Circular Showroom Floor Ring
+      const ringGeo = new THREE.RingGeometry(3.6, 3.65, 64);
+      const ringMat = new THREE.MeshBasicMaterial({ color: 0xdc2626, side: THREE.DoubleSide });
+      const ring = new THREE.Mesh(ringGeo, ringMat);
+      ring.rotation.x = -Math.PI / 2;
+      ring.position.y = 0.005;
+      threeScene.add(ring);
+
+      const innerRingGeo = new THREE.RingGeometry(2.4, 2.43, 64);
+      const innerRingMat = new THREE.MeshBasicMaterial({ color: 0x3f3f46, side: THREE.DoubleSide });
+      const innerRing = new THREE.Mesh(innerRingGeo, innerRingMat);
+      innerRing.rotation.x = -Math.PI / 2;
+      innerRing.position.y = 0.005;
+      threeScene.add(innerRing);
+
+      // Grid helper for tech aesthetic
+      const grid = new THREE.GridHelper(20, 20, 0xdc2626, 0x1f1f23);
+      grid.position.y = 0.002;
+      threeScene.add(grid);
+
+      // 7. Build High-Fidelity 3D Hypercar Model
+      buildHypercarModel();
+
+      // 8. Responsive resize listener
+      window.addEventListener('resize', on3DWindowResize);
+
+      // 9. Animation loop
+      animate3D();
+    }
+
+    function buildHypercarModel() {
+      carModelGroup = new THREE.Group();
+      carBodyMaterials = [];
+
+      // High-Gloss Coachwork Paint Material
+      const paintMaterial = new THREE.MeshPhysicalMaterial({
+        color: currentCarColorHex,
+        metalness: 0.7,
+        roughness: 0.15,
+        clearcoat: 1.0,
+        clearcoatRoughness: 0.08,
+        reflectivity: 0.95
+      });
+      carBodyMaterials.push(paintMaterial);
+
+      // Carbon Fiber Material
+      const carbonMaterial = new THREE.MeshStandardMaterial({
+        color: 0x18181b,
+        roughness: 0.4,
+        metalness: 0.6
+      });
+
+      // Glass Material (Tinted Supercar Canopy)
+      const glassMaterial = new THREE.MeshPhysicalMaterial({
+        color: 0x09090b,
+        transparent: true,
+        opacity: 0.85,
+        roughness: 0.05,
+        metalness: 0.9,
+        transmission: 0.6,
+        ior: 1.52
+      });
+
+      // Chrome / Wheel Alloy Material
+      const chromeMaterial = new THREE.MeshStandardMaterial({
+        color: 0xe2e8f0,
+        metalness: 0.95,
+        roughness: 0.1
+      });
+
+      // Tire Rubber Material
+      const tireMaterial = new THREE.MeshStandardMaterial({
+        color: 0x18181b,
+        roughness: 0.8,
+        metalness: 0.1
+      });
+
+      // Red Racing Brake Calipers
+      const caliperMaterial = new THREE.MeshStandardMaterial({
+        color: 0xdc2626,
+        roughness: 0.3,
+        metalness: 0.8
+      });
+
+      // --- CHASSIS & AERODYNAMIC BODY ---
+      // Lower Main Monocoque
+      const lowerBodyGeo = new THREE.BoxGeometry(2.1, 0.42, 4.4);
+      const lowerBody = new THREE.Mesh(lowerBodyGeo, paintMaterial);
+      lowerBody.position.y = 0.42;
+      lowerBody.castShadow = true;
+      lowerBody.receiveShadow = true;
+      carModelGroup.add(lowerBody);
+
+      // Sloped Nose / Hood
+      const hoodGeo = new THREE.CylinderGeometry(0.85, 1.02, 1.6, 4);
+      const hood = new THREE.Mesh(hoodGeo, paintMaterial);
+      hood.rotation.y = Math.PI / 4;
+      hood.rotation.x = Math.PI / 2 + 0.15;
+      hood.position.set(0, 0.48, 1.35);
+      hood.scale.set(1.0, 0.45, 1.0);
+      hood.castShadow = true;
+      carModelGroup.add(hood);
+
+      // Front Carbon Splitter
+      const splitterGeo = new THREE.BoxGeometry(2.18, 0.06, 0.8);
+      const splitter = new THREE.Mesh(splitterGeo, carbonMaterial);
+      splitter.position.set(0, 0.18, 2.15);
+      splitter.castShadow = true;
+      carModelGroup.add(splitter);
+
+      // Front Splitter Winglets
+      const leftWinglet = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.18, 0.3), carbonMaterial);
+      leftWinglet.position.set(1.09, 0.25, 2.2);
+      carModelGroup.add(leftWinglet);
+
+      const rightWinglet = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.18, 0.3), carbonMaterial);
+      rightWinglet.position.set(-1.09, 0.25, 2.2);
+      carModelGroup.add(rightWinglet);
+
+      // Greenhouse / Cockpit Canopy
+      const cabinGeo = new THREE.CylinderGeometry(0.65, 0.95, 1.85, 8);
+      const cabin = new THREE.Mesh(cabinGeo, glassMaterial);
+      cabin.rotation.x = Math.PI / 2;
+      cabin.position.set(0, 0.84, -0.1);
+      cabin.scale.set(0.95, 1.0, 0.52);
+      cabin.castShadow = true;
+      carModelGroup.add(cabin);
+
+      // Roof Carbon Spine & Scoop
+      const roofSpineGeo = new THREE.BoxGeometry(0.24, 0.12, 1.5);
+      const roofSpine = new THREE.Mesh(roofSpineGeo, carbonMaterial);
+      roofSpine.position.set(0, 1.12, -0.2);
+      carModelGroup.add(roofSpine);
+
+      // Rear Engine Cover Louvers
+      const louverGeo = new THREE.BoxGeometry(1.4, 0.1, 1.2);
+      const louvers = new THREE.Mesh(louverGeo, carbonMaterial);
+      louvers.position.set(0, 0.72, -1.25);
+      louvers.rotation.x = 0.18;
+      carModelGroup.add(louvers);
+
+      // Side Air Intakes (NACA style)
+      const leftIntake = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.3, 0.8), carbonMaterial);
+      leftIntake.position.set(1.06, 0.45, -0.3);
+      carModelGroup.add(leftIntake);
+
+      const rightIntake = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.3, 0.8), carbonMaterial);
+      rightIntake.position.set(-1.06, 0.45, -0.3);
+      carModelGroup.add(rightIntake);
+
+      // Rear Active GT Wing & Stanchions
+      const wingGeo = new THREE.BoxGeometry(2.25, 0.05, 0.5);
+      const wing = new THREE.Mesh(wingGeo, carbonMaterial);
+      wing.position.set(0, 1.15, -2.1);
+      wing.rotation.x = -0.08;
+      wing.castShadow = true;
+      carModelGroup.add(wing);
+
+      const leftPylon = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.5), carbonMaterial);
+      leftPylon.position.set(0.55, 0.9, -2.05);
+      leftPylon.rotation.x = 0.2;
+      carModelGroup.add(leftPylon);
+
+      const rightPylon = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.5), carbonMaterial);
+      rightPylon.position.set(-0.55, 0.9, -2.05);
+      rightPylon.rotation.x = 0.2;
+      carModelGroup.add(rightPylon);
+
+      // Rear Diffuser & Exhaust Outlets
+      const diffuserGeo = new THREE.BoxGeometry(1.8, 0.18, 0.7);
+      const diffuser = new THREE.Mesh(diffuserGeo, carbonMaterial);
+      diffuser.position.set(0, 0.24, -2.15);
+      diffuser.rotation.x = -0.25;
+      carModelGroup.add(diffuser);
+
+      // Dual Titanium Center Exhaust Pipes
+      const exhaustGeo = new THREE.CylinderGeometry(0.07, 0.07, 0.25, 16);
+      const exhaustMat = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.95, roughness: 0.2 });
+      const leftExhaust = new THREE.Mesh(exhaustGeo, exhaustMat);
+      leftExhaust.rotation.x = Math.PI / 2;
+      leftExhaust.position.set(0.14, 0.5, -2.22);
+      carModelGroup.add(leftExhaust);
+
+      const rightExhaust = new THREE.Mesh(exhaustGeo, exhaustMat);
+      rightExhaust.rotation.x = Math.PI / 2;
+      rightExhaust.position.set(-0.14, 0.5, -2.22);
+      carModelGroup.add(rightExhaust);
+
+      // --- HEADLIGHTS & TAILLIGHTS ---
+      // Front Matrix LED Light Strips
+      const ledGeo = new THREE.BoxGeometry(0.38, 0.05, 0.15);
+      const ledMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+      
+      const leftHeadlight = new THREE.Mesh(ledGeo, ledMat);
+      leftHeadlight.position.set(0.72, 0.52, 2.12);
+      leftHeadlight.rotation.y = -0.3;
+      carModelGroup.add(leftHeadlight);
+
+      const rightHeadlight = new THREE.Mesh(ledGeo, ledMat);
+      rightHeadlight.position.set(-0.72, 0.52, 2.12);
+      rightHeadlight.rotation.y = 0.3;
+      carModelGroup.add(rightHeadlight);
+
+      // Spotlight beams for headlights
+      headlightLights = [];
+      const leftBeam = new THREE.SpotLight(0xffffff, 2.0, 15, Math.PI / 6, 0.5, 1);
+      leftBeam.position.set(0.72, 0.52, 2.15);
+      leftBeam.target.position.set(0.72, 0, 8);
+      threeScene.add(leftBeam.target);
+      carModelGroup.add(leftBeam);
+      headlightLights.push(leftBeam);
+
+      const rightBeam = new THREE.SpotLight(0xffffff, 2.0, 15, Math.PI / 6, 0.5, 1);
+      rightBeam.position.set(-0.72, 0.52, 2.15);
+      rightBeam.target.position.set(-0.72, 0, 8);
+      threeScene.add(rightBeam.target);
+      carModelGroup.add(rightBeam);
+      headlightLights.push(rightBeam);
+
+      // Rear Lightbar (Continuous Signature Red LED)
+      const rearLedGeo = new THREE.BoxGeometry(1.9, 0.04, 0.08);
+      const rearLedMat = new THREE.MeshBasicMaterial({ color: 0xdc2626 });
+      const rearLightbar = new THREE.Mesh(rearLedGeo, rearLedMat);
+      rearLightbar.position.set(0, 0.62, -2.2);
+      carModelGroup.add(rearLightbar);
+
+      // --- WHEELS & TIRES ASSEMBLY ---
+      const wheelPositions = [
+        { x: 1.05, y: 0.36, z: 1.35 },   // Front Left
+        { x: -1.05, y: 0.36, z: 1.35 },  // Front Right
+        { x: 1.08, y: 0.39, z: -1.35 },  // Rear Left (staggered larger)
+        { x: -1.08, y: 0.39, z: -1.35 }  // Rear Right
+      ];
+
+      wheelPositions.forEach((pos, idx) => {
+        const isRear = idx >= 2;
+        const radius = isRear ? 0.39 : 0.36;
+        const width = isRear ? 0.32 : 0.28;
+
+        const wheelGroup = new THREE.Group();
+        wheelGroup.position.set(pos.x, pos.y, pos.z);
+
+        // Tire
+        const tireGeo = new THREE.CylinderGeometry(radius, radius, width, 24);
+        const tire = new THREE.Mesh(tireGeo, tireMaterial);
+        tire.rotation.z = Math.PI / 2;
+        tire.castShadow = true;
+        wheelGroup.add(tire);
+
+        // Rim / Alloys
+        const rimGeo = new THREE.CylinderGeometry(radius * 0.72, radius * 0.72, width + 0.01, 16);
+        const rim = new THREE.Mesh(rimGeo, chromeMaterial);
+        rim.rotation.z = Math.PI / 2;
+        wheelGroup.add(rim);
+
+        // Rotor (Disc Brake)
+        const rotorGeo = new THREE.CylinderGeometry(radius * 0.58, radius * 0.58, 0.04, 16);
+        const rotorMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, metalness: 0.9, roughness: 0.2 });
+        const rotor = new THREE.Mesh(rotorGeo, rotorMat);
+        rotor.rotation.z = Math.PI / 2;
+        wheelGroup.add(rotor);
+
+        // Caliper
+        const caliperGeo = new THREE.BoxGeometry(0.06, 0.18, 0.12);
+        const caliper = new THREE.Mesh(caliperGeo, caliperMaterial);
+        caliper.position.set(pos.x > 0 ? -0.06 : 0.06, 0.12, 0);
+        wheelGroup.add(caliper);
+
+        carModelGroup.add(wheelGroup);
+      });
+
+      threeScene.add(carModelGroup);
+    }
+
+    function animate3D() {
+      requestAnimationFrame(animate3D);
+
+      if (threeControls) {
+        threeControls.update();
+      }
+
+      if (threeRenderer && threeScene && threeCamera) {
+        threeRenderer.render(threeScene, threeCamera);
+      }
+    }
+
+    function on3DWindowResize() {
+      const container = document.getElementById('three-car-container');
+      if (!container || !threeCamera || !threeRenderer) return;
+
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      threeCamera.aspect = width / height;
+      threeCamera.updateProjectionMatrix();
+      threeRenderer.setSize(width, height);
+    }
+
+    // 3D Interaction: Coachwork Paint Switcher
+    function changeCarColor(hexColor, colorName) {
+      currentCarColorHex = hexColor;
+      carBodyMaterials.forEach(mat => {
+        mat.color.setHex(hexColor);
+      });
+
+      const label = document.getElementById('paint-label');
+      if (label) label.textContent = colorName;
+
+      // Update ring active indicators
+      const buttons = document.querySelectorAll('.paint-btn');
+      buttons.forEach(btn => {
+        if (btn.getAttribute('title') === colorName) {
+          btn.classList.add('ring-2', 'ring-brandRed-500', 'scale-110');
+        } else {
+          btn.classList.remove('ring-2', 'ring-brandRed-500', 'scale-110');
+        }
+      });
+
+      showToast(`Showroom Paint: ${colorName}`);
+    }
+
+    // 3D Interaction: Auto-Rotate Toggle
+    function toggle3DAutoRotate() {
+      if (!threeControls) return;
+      isAutoRotating = !isAutoRotating;
+      threeControls.autoRotate = isAutoRotating;
+
+      const label = document.getElementById('autorotate-label');
+      const btn = document.getElementById('toggle-autorotate-btn');
+      if (label) label.textContent = isAutoRotating ? "Rotation: ON" : "Rotation: OFF";
+      if (btn) {
+        if (isAutoRotating) {
+          btn.className = "px-3 py-1.5 rounded-lg bg-black/80 hover:bg-black/95 text-white border border-brandRed-500/50 backdrop-blur-md text-xs font-mono flex items-center gap-1.5 transition-all shadow-md";
+        } else {
+          btn.className = "px-3 py-1.5 rounded-lg bg-black/80 hover:bg-black/95 text-silver-400 border border-white/20 backdrop-blur-md text-xs font-mono flex items-center gap-1.5 transition-all shadow-md";
+        }
+      }
+    }
+
+    // 3D Interaction: Headlights Toggle
+    function toggle3DHeadlights() {
+      areHeadlightsOn = !areHeadlightsOn;
+      headlightLights.forEach(light => {
+        light.intensity = areHeadlightsOn ? 2.0 : 0.0;
+      });
+
+      const label = document.getElementById('headlights-label');
+      const btn = document.getElementById('toggle-headlights-btn');
+      if (label) label.textContent = areHeadlightsOn ? "LEDs: ON" : "LEDs: OFF";
+      if (btn) {
+        if (areHeadlightsOn) {
+          btn.className = "px-3 py-1.5 rounded-lg bg-black/80 hover:bg-black/95 text-white border border-brandRed-500/50 backdrop-blur-md text-xs font-mono flex items-center gap-1.5 transition-all shadow-md";
+        } else {
+          btn.className = "px-3 py-1.5 rounded-lg bg-black/80 hover:bg-black/95 text-silver-400 border border-white/20 backdrop-blur-md text-xs font-mono flex items-center gap-1.5 transition-all shadow-md";
+        }
+      }
+    }
+
+    // 3D Interaction: Camera Angle Presets
+    function set3DCameraAngle(angle) {
+      if (!threeCamera || !threeControls) return;
+
+      const buttons = document.querySelectorAll('.cam-view-btn');
+      buttons.forEach(b => {
+        b.className = "cam-view-btn px-2.5 py-1 rounded-lg text-xs font-mono text-silver-400 hover:text-white transition-all";
+      });
+      const activeBtn = document.getElementById(`cam-btn-${angle}`);
+      if (activeBtn) {
+        activeBtn.className = "cam-view-btn px-2.5 py-1 rounded-lg text-xs font-mono text-white bg-brandRed-600 shadow-sm transition-all";
+      }
+
+      if (angle === 'quarter') {
+        threeCamera.position.set(5.5, 2.2, 5.5);
+      } else if (angle === 'side') {
+        threeCamera.position.set(6.8, 1.2, 0);
+      } else if (angle === 'rear') {
+        threeCamera.position.set(0.2, 1.8, -5.8);
+      } else if (angle === 'top') {
+        threeCamera.position.set(0.1, 7.5, 0.2);
+      }
+      threeControls.target.set(0, 0.6, 0);
+      threeControls.update();
+    }
+
+    function reset3DCamera() {
+      set3DCameraAngle('quarter');
+      if (!isAutoRotating) toggle3DAutoRotate();
+      showToast("3D Studio Perspective Reset");
+    }
+
+    // Hero Perspective Switcher Gallery
+    const HERO_PERSPECTIVES = [
+      {
+        src: '/images/hero_manga_autos_1790500446110.jpg',
+        title: 'Maitama Flagship Fleet',
+        subtitle: 'Showroom Floor Presentation · V12 Track Supercars'
+      },
+      {
+        src: '/images/hero_daylight_maitama_1790502160274.jpg',
+        title: 'Golden Hour Maitama Atelier',
+        subtitle: 'Direct Natural Daylight & High-CRI Paint Inspection'
+      },
+      {
+        src: '/images/hero_night_hypercar_1790502173214.jpg',
+        title: 'Night Vault & Private Bays',
+        subtitle: 'After-Hours Confidential Patron Viewing & Security'
+      }
+    ];
+
+    function switchHeroPerspective(index) {
+      const img = document.getElementById('hero-perspective-img');
+      const title = document.getElementById('hero-badge-title');
+      const subtitle = document.getElementById('hero-badge-subtitle');
+      if (!img || !HERO_PERSPECTIVES[index]) return;
+
+      // Smooth opacity fade
+      img.style.opacity = '0.4';
+      img.style.transform = 'scale(1.02)';
+      
+      setTimeout(() => {
+        img.src = HERO_PERSPECTIVES[index].src;
+        if (title) title.textContent = HERO_PERSPECTIVES[index].title;
+        if (subtitle) subtitle.textContent = HERO_PERSPECTIVES[index].subtitle;
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1)';
+      }, 180);
+
+      // Update button states
+      [0, 1, 2].forEach(i => {
+        const btn = document.getElementById(`hero-tab-${i}`);
+        if (!btn) return;
+        if (i === index) {
+          btn.className = "hero-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-brandRed-500 text-white shadow-md transition-all flex items-center gap-1.5 backdrop-blur-md";
+        } else {
+          btn.className = "hero-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-black/60 hover:bg-black/80 text-white/90 border border-white/20 transition-all flex items-center gap-1.5 backdrop-blur-md";
+        }
+      });
+    }
+
+    // Helper: Format currency
+    function formatCurrency(amountNgn) {
+      if (currentCurrency === 'USD') {
+        const usdVal = Math.round(amountNgn / USD_EXCHANGE_RATE);
+        return '$' + usdVal.toLocaleString('en-US');
+      } else {
+        return '₦' + amountNgn.toLocaleString('en-NG');
+      }
+    }
+
+    // Toggle Currency
+    function setCurrency(currency) {
+      currentCurrency = currency;
+      const ngnBtn = document.getElementById('currency-ngn-btn');
+      const usdBtn = document.getElementById('currency-usd-btn');
+
+      if (currency === 'NGN') {
+        ngnBtn.className = "px-2.5 py-1 rounded transition-all bg-brandRed-500 text-white font-semibold shadow-sm";
+        usdBtn.className = "px-2.5 py-1 rounded transition-all text-charcoal-600 dark:text-silver-400 hover:text-black dark:hover:text-white";
+        showToast("Switched currency view to Nigerian Naira (₦)");
+      } else {
+        usdBtn.className = "px-2.5 py-1 rounded transition-all bg-brandRed-500 text-white font-semibold shadow-sm";
+        ngnBtn.className = "px-2.5 py-1 rounded transition-all text-charcoal-600 dark:text-silver-400 hover:text-black dark:hover:text-white";
+        showToast("Switched currency view to US Dollars ($)");
+      }
+
+      applyFilters();
+    }
+
+    // Category Tabs
+    function setCategoryTab(tab) {
+      currentTab = tab;
+      const tabs = ['all', 'supercar', 'executive', 'imports'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-${t}`);
+        if (!btn) return;
+        if (t === tab) {
+          btn.className = "category-tab px-3.5 py-1.5 rounded font-medium transition-all bg-brandRed-500 text-white font-semibold shadow-sm";
+        } else {
+          btn.className = "category-tab px-3.5 py-1.5 rounded font-medium transition-all text-charcoal-600 dark:text-silver-400 hover:text-black dark:hover:text-white";
+        }
+      });
+      applyFilters();
+    }
+
+    // Reset filters
+    function resetFilters() {
+      document.getElementById('filter-make').value = 'all';
+      document.getElementById('filter-style').value = 'all';
+      document.getElementById('filter-engine').value = 'all';
+      document.getElementById('filter-search').value = '';
+      document.getElementById('sort-select').value = 'featured';
+      setCategoryTab('all');
+      showToast("Filter parameters restored.");
+    }
+
+    // Apply Filters & Render Cards
+    function applyFilters() {
+      const makeVal = document.getElementById('filter-make')?.value || 'all';
+      const styleVal = document.getElementById('filter-style')?.value || 'all';
+      const engineVal = document.getElementById('filter-engine')?.value || 'all';
+      const searchVal = (document.getElementById('filter-search')?.value || '').toLowerCase().trim();
+      const sortVal = document.getElementById('sort-select')?.value || 'featured';
+
+      let results = VEHICLES.filter(car => {
+        if (currentTab !== 'all') {
+          if (!car.category.includes(currentTab)) return false;
+        }
+
+        if (makeVal !== 'all' && car.make !== makeVal) return false;
+        if (styleVal !== 'all' && car.style !== styleVal) return false;
+
+        if (engineVal !== 'all') {
+          if (engineVal === 'V12' && car.specs.engineType !== 'V12') return false;
+          if (engineVal === 'V10' && car.specs.engineType !== 'V10') return false;
+          if (engineVal === 'Twin-Turbo' && car.specs.engineType !== 'Twin-Turbo') return false;
+          if (engineVal === 'EV' && car.specs.engineType !== 'EV') return false;
+          if (engineVal === 'Hybrid' && car.specs.engineType !== 'Hybrid') return false;
+        }
+
+        if (searchVal) {
+          const matchString = `${car.name} ${car.subtitle} ${car.make} ${car.specs.engine} ${car.exteriorColor}`.toLowerCase();
+          if (!matchString.includes(searchVal)) return false;
+        }
+
+        return true;
+      });
+
+      if (sortVal === 'price-desc') {
+        results.sort((a, b) => b.priceNgn - a.priceNgn);
+      } else if (sortVal === 'price-asc') {
+        results.sort((a, b) => a.priceNgn - b.priceNgn);
+      } else if (sortVal === 'power-desc') {
+        results.sort((a, b) => b.specs.hp - a.specs.hp);
+      }
+
+      const counterEl = document.getElementById('filtered-count');
+      if (counterEl) counterEl.textContent = results.length;
+
+      renderVehicleGrid(results);
+    }
+
+    // Render Grid (Light and Dark Mode Optimized)
+    function renderVehicleGrid(vehicles) {
+      const container = document.getElementById('vehicle-grid');
+      const emptyState = document.getElementById('empty-state');
+      if (!container) return;
+
+      if (vehicles.length === 0) {
+        container.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      const isDark = isDarkMode();
+      const currentLogoSrc = isDark ? '/images/manga_logo.svg' : '/images/manga_logo_dark_text.svg';
+
+      container.innerHTML = vehicles.map(car => {
+        const formattedPrice = formatCurrency(car.priceNgn);
+        const encodedWhatsAppMsg = encodeURIComponent(
+          `Hello Manga Autos Maitama Showroom Concierge,\n\nI am interested in acquiring the ${car.name}.\nListed Price: ${formattedPrice}\nCustoms SGD: ${car.customsClearanceCode}\nSpecifications: ${car.specs.engine}, ${car.specs.hp} HP\n\nPlease confirm availability for private inspection.`
+        );
+        const whatsappUrl = `https://wa.me/2348096264228?text=${encodedWhatsAppMsg}`;
+
+        return `
+          <div class="glass-panel rounded-2xl overflow-hidden border border-lightSurface-border dark:border-surface-border bg-white dark:bg-surface-card hover:border-brandRed-500/50 transition-all duration-300 flex flex-col group shadow-light-card dark:shadow-card-lift">
+            
+            <!-- Vehicle Image Frame -->
+            <div class="relative h-60 w-full overflow-hidden bg-lightSurface-subtle dark:bg-surface-subtle">
+              <img 
+                src="${car.image}" 
+                alt="${car.name} at Manga Autos Abuja" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                referrerpolicy="no-referrer"
+                onerror="this.onerror=null; this.src='${car.fallbackImage}';"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+              
+              <!-- Customs Clearance Guarantee Tag with Manga Autos Seal -->
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-white/95 dark:bg-obsidian/90 border border-brandRed-500/40 text-[10px] uppercase font-mono tracking-wider text-brandRed-600 dark:text-brandRed-400 backdrop-blur-md shadow-sm">
+                  <img src="${currentLogoSrc}" alt="Manga Automobiles" class="manga-brand-logo h-3 w-auto object-contain" />
+                  <span>100% NCS Duty Cleared</span>
+                </span>
+              </div>
+
+              <!-- Mileage Indicator -->
+              <div class="absolute top-3 right-3">
+                <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-white/90 dark:bg-surface-card/80 border border-lightSurface-border dark:border-surface-border text-[10px] font-mono text-charcoal-700 dark:text-silver-300 backdrop-blur-md">
+                  ${car.mileage}
+                </span>
+              </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              
+              <div>
+                <!-- Brand & Clean Separators with Marque Hallmark -->
+                <div class="flex items-center justify-between mb-1.5">
+                  <div class="flex items-center gap-2 text-xs text-charcoal-500 dark:text-silver-400">
+                    <span class="text-brandRed-500 dark:text-brandRed-400 font-bold">${car.make}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>${car.style}</span>
+                    <span aria-hidden="true">·</span>
+                    <span class="font-mono text-[11px] font-semibold">${car.specs.engineType}</span>
+                  </div>
+                  <div class="h-3.5 w-auto flex items-center opacity-70 group-hover:opacity-100 transition-opacity">
+                    <img src="${currentLogoSrc}" alt="Manga Marque" class="manga-brand-logo h-3 w-auto object-contain" />
+                  </div>
+                </div>
+
+                <!-- Title & Subtitle -->
+                <h3 class="text-lg font-display font-bold text-charcoal-900 dark:text-white group-hover:text-brandRed-500 transition-colors">
+                  ${car.name}
+                </h3>
+                <p class="text-xs text-charcoal-600 dark:text-silver-400 mt-1 line-clamp-1 font-light">
+                  ${car.subtitle}
+                </p>
+
+                <!-- Performance Specs HUD (Horsepower, 0-100 time, Engine) -->
+                <div class="grid grid-cols-3 gap-2 my-5 p-3 rounded-xl bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-center">
+                  <div>
+                    <div class="text-[10px] uppercase font-mono text-charcoal-500 dark:text-silver-500 font-medium">Power</div>
+                    <div class="text-sm font-bold text-charcoal-900 dark:text-white font-mono-num mt-0.5">${car.specs.hp} <span class="text-[10px] text-charcoal-500 dark:text-silver-400 font-normal">HP</span></div>
+                  </div>
+                  <div class="border-x border-lightSurface-border dark:border-surface-border">
+                    <div class="text-[10px] uppercase font-mono text-charcoal-500 dark:text-silver-500 font-medium">0-100 km/h</div>
+                    <div class="text-sm font-bold text-brandRed-500 dark:text-brandRed-400 font-mono-num mt-0.5">${car.specs.zeroToSixty.split(' ')[0]}</div>
+                  </div>
+                  <div>
+                    <div class="text-[10px] uppercase font-mono text-charcoal-500 dark:text-silver-500 font-medium">Top Speed</div>
+                    <div class="text-sm font-bold text-charcoal-900 dark:text-white font-mono-num mt-0.5">${car.specs.topSpeed.split(' ')[0]}</div>
+                  </div>
+                </div>
+
+                <!-- Price Row -->
+                <div class="flex items-baseline justify-between pt-1 pb-4 border-b border-lightSurface-border dark:border-surface-border/60">
+                  <span class="text-xs uppercase font-mono tracking-wider text-charcoal-600 dark:text-silver-400">Clearance Inclusive</span>
+                  <span class="text-xl font-bold font-mono-num tracking-tight text-brandRed-500 dark:text-brandRed-400">
+                    ${formattedPrice}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Action Button Row -->
+              <div class="pt-4 flex flex-col gap-2.5">
+                <div class="grid grid-cols-2 gap-2">
+                  <button 
+                    type="button" 
+                    onclick="openPrivateViewingModal('${car.name}')" 
+                    class="w-full py-2.5 px-3 text-xs font-bold uppercase tracking-wider text-white bg-brandRed-600 hover:bg-brandRed-500 rounded-lg transition-all text-center flex items-center justify-center gap-1.5 shadow-sm"
+                  >
+                    <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                    <span>Private Viewing</span>
+                  </button>
+
+                  <a 
+                    href="${whatsappUrl}" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="w-full py-2.5 px-3 text-xs font-bold uppercase tracking-wider text-charcoal-800 dark:text-white border border-lightSurface-border dark:border-surface-border bg-lightSurface-elevated dark:bg-surface-subtle hover:bg-lightSurface-subtle dark:hover:bg-surface-elevated hover:border-brandRed-500/40 rounded-lg transition-all text-center flex items-center justify-center gap-1.5"
+                  >
+                    <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-500"></i>
+                    <span>Inquire</span>
+                  </a>
+                </div>
+
+                <button 
+                  type="button" 
+                  onclick="openDossierModal('${car.id}')" 
+                  class="text-xs text-charcoal-600 dark:text-silver-400 hover:text-brandRed-500 flex items-center justify-center gap-1 transition-colors py-1 font-medium"
+                >
+                  <i data-lucide="file-text" class="w-3 h-3"></i>
+                  <span>Inspect Vehicle Dossier & SGD Clearance</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+
+    // Modal: Bespoke Sourcing
+    function openBespokeModal() {
+      document.getElementById('bespoke-form').reset();
+      document.getElementById('bespoke-form').classList.remove('hidden');
+      document.getElementById('bespoke-confirmation').classList.add('hidden');
+      document.getElementById('bespoke-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function closeBespokeModal() {
+      document.getElementById('bespoke-modal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function handleBespokeSubmit(e) {
+      e.preventDefault();
+      const makeModel = document.getElementById('src-make-model').value;
+      const yearRange = document.getElementById('src-year-range').value;
+      const destination = document.getElementById('src-destination').value;
+      const budget = document.getElementById('src-budget').value;
+      const clientName = document.getElementById('src-name').value;
+      const clientPhone = document.getElementById('src-phone').value;
+      const notes = document.getElementById('src-notes').value || 'Standard Factory Delivery';
+
+      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+      const refCode = `MGA-SRC-${new Date().getFullYear()}-${randomSuffix}`;
+
+      document.getElementById('confirmed-ref').textContent = refCode;
+
+      const text = encodeURIComponent(
+        `Hello Manga Autos Concierge,\n\nI have submitted a Bespoke Sourcing Request.\nReference: ${refCode}\nClient: ${clientName} (${clientPhone})\nVehicle: ${makeModel} (${yearRange})\nTarget Budget: ${budget}\nDestination: ${destination}\nSpecifications: ${notes}\n\nPlease advise on international procurement and logistics availability.`
+      );
+      document.getElementById('forward-whatsapp-btn').href = `https://wa.me/2348096264228?text=${text}`;
+
+      document.getElementById('bespoke-form').classList.add('hidden');
+      document.getElementById('bespoke-confirmation').classList.remove('hidden');
+      if (window.lucide) window.lucide.createIcons();
+      showToast(`Bespoke sourcing request ${refCode} registered!`);
+    }
+
+    // Modal: Private Viewing
+    function openPrivateViewingModal(vehicleName) {
+      document.getElementById('viewing-form').reset();
+      document.getElementById('viewing-form').classList.remove('hidden');
+      document.getElementById('viewing-confirmation').classList.add('hidden');
+      
+      const targetInput = document.getElementById('view-vehicle-target');
+      if (targetInput) targetInput.value = vehicleName || 'Manga Autos Maitama Showroom Fleet';
+      
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const dateInput = document.getElementById('view-date');
+      if (dateInput) dateInput.value = tomorrow.toISOString().split('T')[0];
+
+      document.getElementById('viewing-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function closePrivateViewingModal() {
+      document.getElementById('viewing-modal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function handleViewingSubmit(e) {
+      e.preventDefault();
+      const vehicle = document.getElementById('view-vehicle-target').value;
+      const date = document.getElementById('view-date').value;
+      const slot = document.getElementById('view-time').value;
+      const clientName = document.getElementById('view-client-name').value;
+      const clientPhone = document.getElementById('view-client-phone').value;
+      const hospitality = document.getElementById('view-hospitality').value;
+
+      document.getElementById('confirmed-viewing-car').textContent = vehicle;
+
+      const text = encodeURIComponent(
+        `Hello Manga Autos Showroom Maitama,\n\nI have reserved a Private Viewing appointment.\nClient: ${clientName} (${clientPhone})\nVehicle: ${vehicle}\nDate: ${date}\nWindow: ${slot}\nHospitality: ${hospitality}\n\nPlease confirm reception clearance.`
+      );
+      document.getElementById('forward-viewing-whatsapp-btn').href = `https://wa.me/2348096264228?text=${text}`;
+
+      document.getElementById('viewing-form').classList.add('hidden');
+      document.getElementById('viewing-confirmation').classList.remove('hidden');
+      if (window.lucide) window.lucide.createIcons();
+      showToast("Private viewing appointment booked!");
+    }
+
+    // Modal: Dossier & Technical Specs
+    function openDossierModal(vehicleId) {
+      const car = VEHICLES.find(v => v.id === vehicleId);
+      if (!car) return;
+
+      const formattedPrice = formatCurrency(car.priceNgn);
+      const dossierContainer = document.getElementById('dossier-content');
+      if (!dossierContainer) return;
+
+      const isDark = isDarkMode();
+      const currentLogoSrc = isDark ? '/images/manga_logo.svg' : '/images/manga_logo_dark_text.svg';
+
+      dossierContainer.innerHTML = `
+        <div class="flex items-start justify-between gap-4 mb-4">
+          <div>
+            <div class="flex items-center gap-2 text-xs font-mono text-brandRed-500 dark:text-brandRed-400 uppercase tracking-widest font-bold mb-1">
+              <i data-lucide="file-check" class="w-3.5 h-3.5"></i>
+              <span>Official Showroom Dossier & Provenance</span>
+            </div>
+            <h3 class="text-2xl font-display font-bold text-charcoal-900 dark:text-white">${car.name}</h3>
+            <p class="text-xs text-charcoal-600 dark:text-silver-400 mt-0.5">${car.subtitle}</p>
+          </div>
+          <div class="hidden sm:flex items-center gap-2.5 px-3 py-1.5 rounded-lg border border-brandRed-500/30 bg-lightSurface-elevated dark:bg-surface-subtle shrink-0">
+            <img src="${currentLogoSrc}" alt="Manga Automobiles" class="manga-brand-logo h-6 w-auto object-contain" />
+            <div class="text-left border-l border-lightSurface-border dark:border-surface-border pl-2">
+              <div class="text-[9px] font-mono uppercase tracking-wider text-brandRed-500 dark:text-brandRed-400 font-bold">Authentic Title</div>
+              <div class="text-[10px] font-bold text-charcoal-900 dark:text-white">Manga Certified</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative h-56 rounded-xl overflow-hidden mb-6 border border-lightSurface-border dark:border-surface-border">
+          <img src="${car.image}" alt="${car.name}" class="w-full h-full object-cover" referrerpolicy="no-referrer" onerror="this.src='${car.fallbackImage}'" />
+          <div class="absolute bottom-3 left-3 bg-white/95 dark:bg-obsidian/90 px-3 py-1 rounded border border-brandRed-500/30 text-xs font-mono text-brandRed-600 dark:text-brandRed-400 font-bold backdrop-blur-md shadow-sm">
+            SGD Certificate: ${car.customsClearanceCode}
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-xl bg-lightSurface-elevated dark:bg-surface-subtle border border-lightSurface-border dark:border-surface-border text-center mb-6">
+          <div>
+            <div class="text-[10px] uppercase font-mono text-charcoal-500 dark:text-silver-500 font-medium">Output</div>
+            <div class="text-base font-bold text-charcoal-900 dark:text-white font-mono-num mt-1">${car.specs.hp} HP</div>
+          </div>
+          <div class="border-l border-lightSurface-border dark:border-surface-border">
+            <div class="text-[10px] uppercase font-mono text-charcoal-500 dark:text-silver-500 font-medium">Acceleration</div>
+            <div class="text-base font-bold text-brandRed-500 dark:text-brandRed-400 font-mono-num mt-1">${car.specs.acceleration.split(' ')[2] || car.specs.zeroToSixty}</div>
+          </div>
+          <div class="border-l border-lightSurface-border dark:border-surface-border">
+            <div class="text-[10px] uppercase font-mono text-charcoal-500 dark:text-silver-500 font-medium">Top Speed</div>
+            <div class="text-base font-bold text-charcoal-900 dark:text-white font-mono-num mt-1">${car.specs.topSpeed}</div>
+          </div>
+          <div class="border-l border-lightSurface-border dark:border-surface-border">
+            <div class="text-[10px] uppercase font-mono text-charcoal-500 dark:text-silver-500 font-medium">Acquisition</div>
+            <div class="text-base font-bold text-brandRed-500 dark:text-brandRed-400 font-mono-num mt-1">${formattedPrice}</div>
+          </div>
+        </div>
+
+        <div class="space-y-3 text-xs mb-6">
+          <div class="flex justify-between py-2 border-b border-lightSurface-border dark:border-surface-border/60">
+            <span class="text-charcoal-600 dark:text-silver-400 font-medium">Engine Architecture:</span>
+            <span class="text-charcoal-900 dark:text-silver-200 text-right font-medium">${car.specs.engine}</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-lightSurface-border dark:border-surface-border/60">
+            <span class="text-charcoal-600 dark:text-silver-400 font-medium">Transmission:</span>
+            <span class="text-charcoal-900 dark:text-silver-200 text-right font-medium">${car.specs.transmission}</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-lightSurface-border dark:border-surface-border/60">
+            <span class="text-charcoal-600 dark:text-silver-400 font-medium">Drive Layout:</span>
+            <span class="text-charcoal-900 dark:text-silver-200 text-right font-medium">${car.specs.drivetrain}</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-lightSurface-border dark:border-surface-border/60">
+            <span class="text-charcoal-600 dark:text-silver-400 font-medium">Exterior Finish:</span>
+            <span class="text-charcoal-900 dark:text-silver-200 text-right font-medium">${car.exteriorColor}</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-lightSurface-border dark:border-surface-border/60">
+            <span class="text-charcoal-600 dark:text-silver-400 font-medium">Interior Hide / Trim:</span>
+            <span class="text-charcoal-900 dark:text-silver-200 text-right font-medium">${car.interiorColor}</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-lightSurface-border dark:border-surface-border/60">
+            <span class="text-charcoal-600 dark:text-silver-400 font-medium">Nigeria Customs Status:</span>
+            <span class="text-emerald-600 dark:text-emerald-400 text-right font-bold">${car.customsDutyStatus}</span>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-lightSurface-elevated dark:bg-surface-card border border-brandRed-500/20 text-xs text-charcoal-700 dark:text-silver-300 leading-relaxed mb-6 relative overflow-hidden">
+          <div class="absolute -right-4 -bottom-4 w-32 h-20 opacity-10 pointer-events-none select-none">
+            <img src="${currentLogoSrc}" alt="Watermark" class="manga-brand-logo w-full h-full object-contain" />
+          </div>
+          <div class="flex items-center gap-2 font-bold text-charcoal-900 dark:text-white mb-1.5">
+            <img src="${currentLogoSrc}" alt="Marque" class="manga-brand-logo h-3 w-auto object-contain" />
+            <span>Curator's Provenance & Inspection Summary:</span>
+          </div>
+          <p class="relative z-10 font-light">${car.provenanceNotes}</p>
+        </div>
+
+        <div class="flex items-center justify-end gap-3">
+          <button type="button" onclick="closeDossierModal()" class="px-4 py-2.5 text-xs text-charcoal-600 dark:text-silver-400 hover:text-black dark:hover:text-white rounded-lg border border-lightSurface-border dark:border-surface-border">
+            Close Dossier
+          </button>
+          <button type="button" onclick="closeDossierModal(); openPrivateViewingModal('${car.name}');" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-brandRed-600 hover:bg-brandRed-500 rounded-lg transition-all shadow-md hover:shadow-red-glow">
+            Book Private Viewing
+          </button>
+        </div>
+      `;
+
+      document.getElementById('dossier-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function closeDossierModal() {
+      document.getElementById('dossier-modal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Mobile Navigation Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu) {
+        menu.classList.toggle('hidden');
+      }
+    }
+
+    // Toast Notifier
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const msg = document.getElementById('toast-message');
+      if (!toast || !msg) return;
+
+      msg.textContent = message;
+      toast.classList.remove('hidden');
+
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+
+    // Modal click-outside listener
+    window.addEventListener('click', (e) => {
+      const bespoke = document.getElementById('bespoke-modal');
+      const viewing = document.getElementById('viewing-modal');
+      const dossier = document.getElementById('dossier-modal');
+      if (e.target === bespoke) closeBespokeModal();
+      if (e.target === viewing) closePrivateViewingModal();
+      if (e.target === dossier) closeDossierModal();
+    });
+
+    // Escape key listener for all modals
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeBespokeModal();
+        closePrivateViewingModal();
+        closeDossierModal();
+      }
+    });
+
+    // Initialize application on DOM content loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      applyFilters();
+      init3DStudio();
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>

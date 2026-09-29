@@ -1,0 +1,6 @@
+{
+  "name": "Manga Autos | Luxury & High-Performance Dealership Abuja",
+  "description": "Exotic supercars, luxury sedans, and high-performance vehicles in Maitama, Abuja. Verified customs duty clearance and bespoke international sourcing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
